@@ -1,0 +1,94 @@
+@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+ .login{
+    background: linear-gradient(120deg, #2498db91, #8e44ad70);
+    height: 100vh;
+    width: 100vw;
+} 
+.login-box {
+    width: 320px;
+    height: 345px;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+    color:black;
+    background:white;
+    border-radius: 5px;
+}
+.login-box h3{
+	float: left;
+	/* font-size: 40px; */
+	border-bottom: 6px solid #6124c2;
+	margin-bottom: 50px;
+    padding: 13px 0;
+    width: 100%;
+}
+.box{
+	width: 100%;
+	overflow: hidden;
+	/* font-size: 20px; */
+	padding: 10px 0;
+    border-bottom: 2px solid #dddddd;
+    position: relative;
+    margin: 30px 0;
+}
+
+.box input{
+	border: none;
+	outline: none;
+	background:none;
+	color: #333;
+	/* font-size: 12px; */
+	width: 80%;
+	float: left;
+	margin: 0 12px;
+}
+
+
+.btn-login{
+    width: 50%;
+    background: none;
+    color: #fff;
+    font-weight: 700;
+	padding: 5px;
+	/* font-size: 18px; */
+    transition: .5s;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-image: linear-gradient(120deg, #2498db, #8e44ad);
+    border: none;
+    border-radius: 50px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+.btn-login:hover{
+    background-position: right;
+  }
+.login-box a{
+    margin-top: 15px;
+    margin-right: 8px;
+    float: right;
+}
+.svg-inline--fa {
+  margin-left: 5px;
+  float: left;
+}
+.container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+nav.navbar.navbar-expand-lg.navbar-light.bg-light {
+    margin: 0 !important;
+}
+
+.account-icon{
+    text-align: center;
+}
+.account-icon > i {
+    font-size: 55px;
+    padding-top: 20px;
+}

@@ -1,0 +1,49 @@
+.add-class-btn {
+  padding-bottom: 1em;
+}
+#custom-cardbody {
+  transition: 0.4s;
+}
+.card {
+  margin-left: 0;
+}
+.form-group {
+  display: flex;
+  align-items: center;
+}
+.form-group > label {
+  white-space: nowrap;
+  margin-right: 5px;
+  width: 150px;
+}
+
+.add-class-btn {
+  padding: 15px 0;
+}
+
+.course-funcs {
+  display: flex;
+}
+.course-funcs > button {
+  padding: 2px 5px;
+}
+.class-funcs .badge {
+  padding: 4px 5px;
+}
+
+.data-students .card-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btns {
+  display: flex;
+}
+
+.badge {
+  cursor: pointer;
+}
+#studentAdded-card-header {
+  background: #28a745 !important;
+  color: white;
+}
