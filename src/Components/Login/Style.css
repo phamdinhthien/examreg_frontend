@@ -27,10 +27,11 @@
 	width: 100%;
 	overflow: hidden;
 	/* font-size: 20px; */
-	padding: 10px 0;
-    border-bottom: 2px solid #dddddd;
+    padding: 10px 0;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #2498db;
     position: relative;
-    margin: 30px 0;
+    margin: 30px 0px;
 }
 
 .box input{

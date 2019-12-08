@@ -174,7 +174,7 @@ img {
 }
 .box-home .home:hover .face.face1{
     background: linear-gradient(90deg, rgb(72, 177, 191), rgb(103, 126, 189));
-    transform: translateY(0);
+    transform: translateY(10px);
     transition: 0.5s;
 }
 .box-home .home .face.face1 .content{

@@ -30,6 +30,16 @@ class Login extends Component {
             window.location.replace('/home');
         }
     }
+    onMouseDown = () => {
+        document.getElementById('eye-password').className = ('fa fa-eye');
+        document.getElementById('password').setAttribute('type', 'text');
+
+    }
+    onMouseUp = () =>{
+        document.getElementById('eye-password').className = ('fa fa-eye-slash')
+        document.getElementById('password').setAttribute('type', 'password');
+        
+    }
     render() {
         return (
             <div className="container-fluid login">
@@ -39,12 +49,12 @@ class Login extends Component {
                     </div>
                     <form onSubmit={this.submitForm}>
                         <div className="box">
-                            <i className="fa fa-user"></i>
+                            
                             <input type="text" placeholder="Username" name="username" value={this.state.username} onChange={this.onChange} required />
                         </div>
                         <div className="box">
-                            <i className="fa fa-lock"></i>
-                            <input type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.onChange} required />
+                        <i className="fa fa-eye-slash" id="eye-password"  aria-hidden="true" onMouseDown={this.onMouseDown} onMouseUp={this.onMouseUp}></i>
+                        <input type="password" id="password" placeholder="Password" name="password" value={this.state.password} onChange={this.onChange} required />
                         </div>
                         {!this.state.loading
                             ?
