@@ -1,0 +1,24 @@
+.breadcrumb {
+    position: relative;
+    border-radius: 0;
+    border-bottom: 1px solid #c8ced3;
+}
+
+.breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    padding: .75rem 1rem;
+    margin-bottom: 1.5rem;
+    list-style: none;
+    background-color: #fff !important;
+}
+.breadcrumb-link{ 
+    text-decoration: none;
+    color: #999999;
+}
+.breadcrumb-link:hover{
+    text-decoration: underline;
+}
+.breadcrumb-link-active{
+   color:  #007bff;
+}
