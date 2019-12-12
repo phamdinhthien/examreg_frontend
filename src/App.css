@@ -221,3 +221,10 @@ body, button{
 #alert.display {
 	bottom: 0;
 }
+
+.activeMenu{
+  color: black !important;
+}
+a:hover {
+  color: black !important;
+}

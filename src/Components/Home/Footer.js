@@ -9,10 +9,10 @@ class Footer extends Component {
                     <div className="row">
                             <div className="col-md-4">
                                 <h3> Về ABCuni </h3>
-                                <a>About Us</a><br></br>
-                                <a>Policies</a><br></br>
-                                <a>Contact</a><br></br>
-                                <a>FAQs</a><br></br>    
+                                <img src="https://img.icons8.com/doodle/100/000000/brick.png"></img><br></br>
+                                <a>Chính sách</a><br></br>
+                                <a>Liên Lạc</a><br></br>
+                                <a>Trung Tâm Phát Ứng Dụng</a><br></br>  
                             </div>
                             <div className="col-md-4">
                                 <h3>Liên Hệ</h3>

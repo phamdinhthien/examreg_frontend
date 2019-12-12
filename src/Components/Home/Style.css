@@ -106,6 +106,9 @@ img {
     color: #fff;
     height: 400px;
 }
+.footer img{
+    height: 120px;
+} 
 .logo{
 	width: 130px;
 	margin-top: 10px;
@@ -113,8 +116,8 @@ img {
 }
 .footer h3{
 	text-align: left;
-	margin-top: 30px;
-	margin-bottom: 40px;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 .footer p{
 	text-align: justify;
@@ -170,7 +173,7 @@ img {
     align-items: center;
     z-index: 2;
     transform: translateY(120px);
-    border-radius: 0.25rem;
+    border-radius: 0.26rem;
 }
 .box-home .home:hover .face.face1{
     background: linear-gradient(90deg, rgb(72, 177, 191), rgb(103, 126, 189));
@@ -179,7 +182,8 @@ img {
 }
 .box-home .home .face.face1 .content{
   transition: 0.5s;
-  opacity: 0.4;
+  opacity: 0.8;
+  height: 120px;
 }
 .box-home .home .face.face1 .content h3{
       margin: 10px 0;
@@ -209,7 +213,7 @@ img {
     box-sizing: border-box;
     box-shadow: 0 20px 50px rgba(0,0,0,.8);
     z-index: 1;
-    border-radius: 0.25rem;
+    border-radius: 0.26rem;
 }
 .box-home .home .face.face2 .content p{
    margin: 0;
@@ -225,12 +229,11 @@ img {
     padding: 6px;
     color: #fff;
     border: none;
-    border-radius: 15px;
+    border-radius: 20px;
+
 }
 .box-home .home .face.face2 .content a:hover{
-    background: linear-gradient(90deg, rgb(72, 177, 191), rgb(103, 126, 189));
-    color: #fff;
-   
+    background-image: linear-gradient(to right,#2e3192,#1bffff);
 }
 .home {
     margin-bottom: 100px;
@@ -241,5 +244,60 @@ img {
     justify-content: center;
     align-items: center;
 }
+.container-author{
+    margin:0px;
+    font-family: 'Quicksand', sans-serif;
+    padding: 0;
+    background: #f2f2f2;
 
- 
+}
+.boxAuthor{
+   max-width: 1000px;
+   margin: 0px auto;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-around;
+}
+.authorImg img{
+    position: absolute;
+    height: 398px;
+    width: 298px;
+    object-fit: cover;
+ }
+ .author:hover .authorImg{
+     transform: rotateY(-125deg);
+ }
+.author{
+    position: relative;
+    margin: 20px 0;
+    width: 300px;
+    height: 400px;
+    background:#fff;
+    transform-style: preserve-3d;
+    transform: perspective(2000px);
+    transition: 1s;
+    border-radius: 1em;
+}
+.author:hover{
+    transform: perspective(2000px) rotate(-10deg);
+    box-shadow: inset 20px 0 50px rgba(0, 0, 0,.5);
+}
+.authorImg{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box ;
+    transform-origin: left;
+    z-index: 2;
+    transition: 1s;
+    border-radius: 1em;
+    overflow: hidden;
+}
+.author .details{
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    padding: 20px;
+
+}

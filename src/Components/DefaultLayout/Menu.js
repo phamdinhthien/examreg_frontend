@@ -7,6 +7,7 @@ import {
   DropdownItem,
   NavbarText
 } from 'reactstrap';
+var classNames = require('classnames');
 
 const menus = [
   { label: "Quản Lý Sinh Viên", to: "/students", exact: false },
@@ -29,13 +30,13 @@ handleLogout = () =>{
           <div className="navbar-nav">
             {
               menus.map((m, index) => {
-                return <Link className="nav-item nav-link" style={{color:"#fff  ", fontWeight:"700", marginRight:"20px", padding:"5px 0px" }} key={index} to={m.to} onClick={() => this.setState({ isShowMenu: false })}>{m.label}</Link>
+                return <Link className={ classNames('nav-item nav-link', {'activeMenu': window.location.pathname == m.to} ) } style={{color:"#fff  ", fontWeight:"700", marginRight:"20px", padding:"5px 0px" }} key={index} to={m.to} onClick={() => this.setState({ isShowMenu: false })}>{m.label}</Link>
               })
             }
           </div>
         </div>
          <UncontrolledDropdown>
-              <DropdownToggle nav>
+              <DropdownToggle nav caret> 
               Adminstration <img src="https://img.icons8.com/ios-filled/50/000000/cat-footprint.png"></img>
               </DropdownToggle>
               <DropdownMenu right>
