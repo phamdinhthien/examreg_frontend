@@ -1,8 +1,8 @@
 import React from 'react';
 import { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, Spinner, Badge } from 'reactstrap';
-import { alertText, alertTextCustom } from '../../../core/Controller';
-import * as ApiConfig from '../../../api/ConfigApi';
+import { alertText, alertTextCustom } from '../../../../core/Controller';
+import * as ApiConfig from '../../../../api/ConfigApi';
 
 class DeleteExam extends Component {
     constructor(props) {
@@ -14,6 +14,7 @@ class DeleteExam extends Component {
     }
     toggle = (e) => {
         e.preventDefault();
+        this.props.setCollapse(this.props.index);
         this.setState({
             modal: !this.state.modal,
             code: '',
@@ -25,11 +26,11 @@ class DeleteExam extends Component {
             loading: true
         })
         let semesterID = this.props.semesterID;
-        fetch(ApiConfig.API_URL + '/Semesters/DeleteOneSemeter.php?id=' + semesterID)
-        .then(res => res.json())
+        fetch(ApiConfig.API_URL + '/Semesters/DeleteOneSemester.php?id=' + semesterID)
+            .then(res => res.json())
             .then(response => {
                 alertTextCustom("Xóa kì thi thành công", "#28a745");
-                this.props.getAllSemesters(semesterID);
+                this.props.loadData();
                 this.setState({
                     modal: false
                 })
@@ -41,7 +42,7 @@ class DeleteExam extends Component {
         let { modal } = this.state;
         return (
             <div className="class-funcs delete-class-btn">
-                <Badge color="danger" onClick={this.toggle}><i className="fa fa-trash mr-1"></i>Xóa</Badge>
+                <Button color="danger" onClick={this.toggle}><i className="fa fa-trash mr-1"></i>Xóa</Button>
                 <Modal isOpen={modal} >
                     <ModalHeader>Xóa Kì Thi</ModalHeader>
                     <ModalBody>

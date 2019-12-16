@@ -1,8 +1,8 @@
 import React from 'react';
 import { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, Spinner, Badge } from 'reactstrap';
-import { alertText, alertTextCustom } from '../../../core/Controller';
-import * as ApiConfig from '../../../api/ConfigApi';
+import { alertText, alertTextCustom } from '../../../../core/Controller';
+import * as ApiConfig from '../../../../api/ConfigApi';
 
 class DeleteExamSubject extends Component {
     constructor(props) {
@@ -24,15 +24,16 @@ class DeleteExamSubject extends Component {
         this.setState({
             loading: true
         })
-        let examID = this.props.examID;
-        fetch(ApiConfig.API_URL + '/Semesters/DeleteOneSemeter.php?id=' + examID)
-        .then(res => res.json())
+        let subjectID = this.props.subjectID;
+        let semesterID = this.props.semesterID;
+        fetch(ApiConfig.API_URL + '/Subjects/DeleteOneSubject.php?id=' + subjectID)
+            .then(res => res.json())
             .then(response => {
-                alertTextCustom("Xóa môn thi thành công", "#28a745");
-                this.props.getAllSemesters(examID);
                 this.setState({
                     modal: false
                 })
+                this.props.getAllSubjectBySemesterID(semesterID);
+                alertTextCustom("Xóa môn thi thành công", "#28a745");
             })
             .catch(err => alertText('Xóa môn thi không thành công'))
     }
