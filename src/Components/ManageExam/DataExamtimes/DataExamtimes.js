@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Table, Container } from 'reactstrap';
-import EditTableExam from './EditTableExam';
+import EditTableExam from '../Buttons/Examtime/EditTableExam';
 class ManageExam extends Component {
   componentDidMount() {
-    console.log(this.props)
   }
   render() {
     return (
@@ -78,7 +77,7 @@ class ManageExam extends Component {
             </tr>
           </tbody>
         </Table>
-        </div>
+      </div>
     );
   }
 

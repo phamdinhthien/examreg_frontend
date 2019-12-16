@@ -2,15 +2,17 @@ import React, { Component, useState } from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import { Container, Collapse, CardBody, CardHeader } from 'reactstrap';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import AddShiftExam from '../ManageExam/AddShiftExam';
-import EditTableExam from '../ManageExam/EditTableExam';
-import DataExam from './DataExam';
-import AddExam from './Buttons/AddExam';
-import AddExamSubject from './Buttons/AddExamSubject';
-import DeleteExam from './Buttons/DeleteExam';
-import DeleteExamSubject from './Buttons/DeleteExamSubject';
+import AddShiftExam from './Buttons/Examtime/AddShiftExam';
+import EditTableExam from './Buttons/Examtime/EditTableExam';
+import DataExam from './DataExamtimes/DataExamtimes';
+import AddExam from './Buttons/Semester/AddSemester';
+import DeleteExam from './Buttons/Semester/DeleteSemester';
+import UpdateExam from './Buttons/Semester/UpdateSemester';
+import AddExamSubject from './Buttons/Subject/AddExamSubject';
+import DeleteExamSubject from './Buttons/Subject/DeleteExamSubject';
 import classnames from 'classnames';
 import * as ApiConfig from '../../api/ConfigApi';
+import UpdateExamSubject from './Buttons/Subject/UpdateExamSubject';
 
 class ManageExam extends Component {
 
@@ -21,6 +23,7 @@ class ManageExam extends Component {
       modal: false,
       semesters: null,
       semesterNames: [],
+      subjectsBySemesterId: [],
       childActiveTab: {},
     };
   }
@@ -34,38 +37,44 @@ class ManageExam extends Component {
   }
 
   loadData = () => {
+    let self = this;
     fetch(ApiConfig.API_URL + '/Semesters/GetAllSemesters.php')
       .then(res => res.json())
       .then(response => {
         let times = response.data.length;
-        this.setState({
+        self.setState({
           semesters: response.data,
           collapse: this.repeat(false, times),
         })
+        let subjectsBySemesterId = [];
         let semesterNames = [];
         response.data.map((c) => {
-          semesterNames.push((c.code).toLowerCase());
-          fetch(ApiConfig.API_URL + '/Semesters/GetAllSemesters.php?semester_id=' + c.semester_id)
+          semesterNames.push((c.name).toLowerCase());
+          fetch(ApiConfig.API_URL + '/Subjects/GetAllSubjects.php?semester_id=' + c.id)
             .then(res => res.json())
             .then(response => {
-              semesterNames[c.semester_id] = response.data;
+              subjectsBySemesterId[c.id] = response.data;
               this.setState({
-                semesterNames: semesterNames
+                subjectsBySemesterId: subjectsBySemesterId
               })
             })
             .catch(err => console.log(err))
         })
+        self.setState({
+          semesterNames: semesterNames
+        })
       })
       .catch(err => { console.log(err) })
   }
-  getAllSemesters = (semester_id) => {
-    let semesterNames = this.state.semesterNames;
-    fetch(ApiConfig.API_URL + '/Semesters/GetAllSemesters.php?semester_id=' + semester_id)
+
+  getAllSubjectBySemesterID = (semester_id) => {
+    let subjectsBySemesterId = this.state.subjectsBySemesterId;
+    fetch(ApiConfig.API_URL + '/Subjects/GetAllSubjects.php?semester_id=' + semester_id)
       .then(res => res.json())
       .then(response => {
-        semesterNames[semester_id] = response.data;
+        subjectsBySemesterId[semester_id] = response.data;
         this.setState({
-          semesterNames: semesterNames
+          subjectsBySemesterId: subjectsBySemesterId
         })
       })
       .catch(err => console.log(err))
@@ -102,7 +111,7 @@ class ManageExam extends Component {
   }
 
   render() {
-    let { collapse, activeTab, semesters, semesterNames, childActiveTab } = this.state;
+    let { collapse, activeTab, semesters, semesterNames, subjectsBySemesterId, childActiveTab } = this.state;
     return (
       <div className="container-fluid">
         <Card className="card-custom">
@@ -115,14 +124,14 @@ class ManageExam extends Component {
               {
                 semesters ?
                   semesters.map((semester, index) => {
-                    console.log(childActiveTab[index])
                     return (
                       <Card key={index} className="course-card">
                         <CardHeader id="card-header">
                           <div id="card-element" onClick={() => this.toggle(index)} className="d-flex justify-content-between">
                             <span>Kì Thi {semester.name}-{semester.year}</span>
                             <div style={{ margin: "0 20px" }} className="course-funcs">
-                              <DeleteExam index={index} semesterID={semester.semester_id} setCollapse={this.setCollapse} loadData={this.loadData} />
+                              <UpdateExam index={index} semesterID={semester.id} setCollapse={this.setCollapse} loadData={this.loadData} />
+                              <DeleteExam index={index} semesterID={semester.id} setCollapse={this.setCollapse} loadData={this.loadData} />
                             </div>
                           </div>
                         </CardHeader>
@@ -135,52 +144,45 @@ class ManageExam extends Component {
                                     onClick={() => { this.toggleElement(index, '1'); }}
                                   >
                                     Quản Lý Môn Thi
-                        </NavLink>
+                                  </NavLink>
                                 </NavItem>
                                 <NavItem>
                                   <NavLink className={classnames({ active: childActiveTab[index] === '2' })}
                                     onClick={() => { this.toggleElement(index, '2'); }}
                                   >
                                     Quản Lý Ca Thi
-                        </NavLink>
+                                  </NavLink>
                                 </NavItem>
                               </Nav>
                               <TabContent activeTab={childActiveTab[index]}>
                                 <TabPane tabId="1">
-                                  <Row>
-                                    <Col sm="12">
-                                      <AddExamSubject onClickAddExamSubjectBtn={() => this.onClickAddExamSubjectBtn(index)} semester_id={semester.semester_id} />
-                                      {
-                                        semesterNames[semester.semester_id] && semesterNames[semester.semester_id].length > 0
-                                          ?
-                                          semesterNames[semester.semester_id].map((c, i) => {
-                                            return (
-                                              <div key={i}>
-                                                <Link to={`exams/manage/${semester.semester_id}/${c.id}`}>
-                                                  <div style={{ position: "relative" }}>
-                                                    <div id="card-item">
-                                                      <p>{c.name}</p>
-                                                    </div>
-                                                    <div style={{ position: "absolute", top: "1em", right: "2em", display: "flex" }}>
-                                                      <DeleteExamSubject semesterID={c.id} examID={semester.semester_id} getAllSemesters={this.getAllSemesters} />
-                                                    </div>
-                                                  </div>
-                                                </Link>
+                                  <AddExamSubject onClickAddExamSubjectBtn={() => this.onClickAddExamSubjectBtn(index)} semesterID={semester.id} getAllSubjectBySemesterID={this.getAllSubjectBySemesterID} />
+                                  {
+                                    subjectsBySemesterId[semester.id] && subjectsBySemesterId[semester.id].length > 0
+                                      ?
+                                      subjectsBySemesterId[semester.id].map((subject, i) => {
+                                        return (
+                                          <div key={i}>
+                                            <Link to={`exams/subject/manage/${semester.id}`}>
+                                              <div style={{ position: "relative" }}>
+                                                <div id="card-item">
+                                                  <p>{subject.name} - {subject.code}</p>
+                                                </div>
+                                                <div style={{ position: "absolute", top: "1em", right: "2em", display: "flex" }}>
+                                                  <UpdateExamSubject subjectID={subject.id} semesterID={semester.id} getAllSubjectBySemesterID={this.getAllSubjectBySemesterID} />
+                                                  <DeleteExamSubject subjectID={subject.id} semesterID={semester.id} getAllSubjectBySemesterID={this.getAllSubjectBySemesterID} />
+                                                </div>
                                               </div>
-                                            )
-                                          })
-                                          :
-                                          <div style={{ textAlign: "center" }}>Chưa có dữ liệu</div>
-                                      }
-                                    </Col>
-                                  </Row>
+                                            </Link>
+                                          </div>
+                                        )
+                                      })
+                                      :
+                                      <div style={{ textAlign: "center" }}>Chưa có dữ liệu</div>
+                                  }
                                 </TabPane>
                                 <TabPane tabId="2">
-                                  <Row>
-                                    <Col sm="12">
                                       <DataExam />
-                                    </Col>
-                                  </Row>
                                 </TabPane>
                               </TabContent>
                             </div>

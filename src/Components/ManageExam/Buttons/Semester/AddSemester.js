@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
-import * as ApiConfig from '../../../api/ConfigApi';
+import * as ApiConfig from '../../../../api/ConfigApi';
 
 class AddExam extends Component {
   constructor(props) {
@@ -32,12 +32,14 @@ class AddExam extends Component {
       name: name,
       year: year
     }
-    fetch(ApiConfig.API_URL + '/Semesters/CreateOneSemeter.php', {
+    fetch(ApiConfig.API_URL + '/Semesters/CreateOneSemester.php', {
       method: 'POST',
       body: JSON.stringify(data)
     }).then(res => res.json())
       .then(response => {
-        this.toggle();
+        this.setState({
+          modal:false
+        });
         this.props.loadData();
       })
       .catch(err => console.log(err))
@@ -62,7 +64,7 @@ class AddExam extends Component {
         <div className="EditButtonAE">
           <Button color="primary" className="AddExam" onClick={this.toggle}><i className="fa fa-plus-square mr-1" aria-hidden="true"></i> Thêm Kì Thi </Button>
         </div>
-        <Modal isOpen={modal} toggle={this.toggle} className={className}>
+        <Modal isOpen={modal} className={className}>
           <ModalHeader>Thêm Kì Thi</ModalHeader>
           <ModalBody>
             <Form>
