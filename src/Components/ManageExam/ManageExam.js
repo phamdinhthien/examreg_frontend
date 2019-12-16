@@ -20,7 +20,8 @@ class ManageExam extends Component {
       collapse: [],
       modal: false,
       semesters: null,
-      semesterNames: []
+      semesterNames: [],
+      childActiveTab: {},
     };
   }
 
@@ -77,7 +78,8 @@ class ManageExam extends Component {
   toggle = (index) => {
     let collapse = this.state.collapse;
     collapse[index] = !collapse[index];
-    this.setState({ collapse: collapse });
+    let { childActiveTab } = this.state;
+    this.setState({ collapse: collapse, childActiveTab: { ...childActiveTab, [index]: '1' } });
   };
 
   setCollapse = (index) => {
@@ -86,14 +88,21 @@ class ManageExam extends Component {
     this.setState({ collapse: collapse });
   }
 
-  toggleElement = (tab) => {
+  toggleElement = (index, tab) => {
+    let { childActiveTab } = this.state;
+    this.setState({
+      childActiveTab: {
+        ...childActiveTab,
+        [index]: tab
+      }
+    })
     if (this.state.activeTab !== tab) {
       this.setState({ activeTab: tab });
     }
   }
 
   render() {
-    let { collapse, activeTab, semesters, semesterNames } = this.state;
+    let { collapse, activeTab, semesters, semesterNames, childActiveTab } = this.state;
     return (
       <div className="container-fluid">
         <Card className="card-custom">
@@ -106,6 +115,7 @@ class ManageExam extends Component {
               {
                 semesters ?
                   semesters.map((semester, index) => {
+                    console.log(childActiveTab[index])
                     return (
                       <Card key={index} className="course-card">
                         <CardHeader id="card-header">
@@ -121,21 +131,21 @@ class ManageExam extends Component {
                             <div>
                               <Nav tabs>
                                 <NavItem>
-                                  <NavLink className={classnames({ active: activeTab === '1' })}
-                                    onClick={() => { this.toggleElement('1'); }}
+                                  <NavLink className={classnames({ active: childActiveTab[index] === '1' })}
+                                    onClick={() => { this.toggleElement(index, '1'); }}
                                   >
                                     Quản Lý Môn Thi
                         </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                  <NavLink className={classnames({ active: activeTab === '2' })}
-                                    onClick={() => { this.toggleElement('2'); }}
+                                  <NavLink className={classnames({ active: childActiveTab[index] === '2' })}
+                                    onClick={() => { this.toggleElement(index, '2'); }}
                                   >
                                     Quản Lý Ca Thi
                         </NavLink>
                                 </NavItem>
                               </Nav>
-                              <TabContent activeTab={activeTab}>
+                              <TabContent activeTab={childActiveTab[index]}>
                                 <TabPane tabId="1">
                                   <Row>
                                     <Col sm="12">

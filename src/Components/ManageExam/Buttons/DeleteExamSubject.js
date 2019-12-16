@@ -28,13 +28,13 @@ class DeleteExamSubject extends Component {
         fetch(ApiConfig.API_URL + '/Semesters/DeleteOneSemeter.php?id=' + examID)
         .then(res => res.json())
             .then(response => {
-                alertTextCustom("Xóa kì thi thành công", "#28a745");
+                alertTextCustom("Xóa môn thi thành công", "#28a745");
                 this.props.getAllSemesters(examID);
                 this.setState({
                     modal: false
                 })
             })
-            .catch(err => alertText('Xóa kì thi không thành công'))
+            .catch(err => alertText('Xóa môn thi không thành công'))
     }
 
     render() {
@@ -43,9 +43,9 @@ class DeleteExamSubject extends Component {
             <div className="class-funcs delete-class-btn">
                 <Badge color="danger" onClick={this.toggle}><i className="fa fa-trash mr-1"></i>Xóa</Badge>
                 <Modal isOpen={modal} >
-                    <ModalHeader>Xóa Kì Thi</ModalHeader>
+                    <ModalHeader>Xóa Môn Thi</ModalHeader>
                     <ModalBody>
-                        Bạn Có Muốn Xóa Kì Thi Này
+                        Bạn Có Muốn Xóa Môn Thi Này
                     </ModalBody>
                     <ModalFooter>
                         {!this.state.loading
