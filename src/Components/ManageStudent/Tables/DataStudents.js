@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Container, Card, CardImg, CardText, CardHeader, CardBody, Button } from 'reactstrap';
+import { Table, Container, Card, CardImg, CardText, CardHeader, CardBody, Spinner } from 'reactstrap';
 import * as ApiConfig from '../../../api/ConfigApi';
 import ImportExcelBtn from '../Buttons/Student/ImportExcelBtn';
 import UpdateStudentBtn from '../Buttons/Student/UpdateStudentBtn';
@@ -15,7 +15,8 @@ class DataStudents extends Component {
     super(props);
     this.state = {
       students: [],
-      startIndex: 1
+      startIndex: 1,
+      loading: false
     }
   }
   componentDidMount() {
@@ -24,24 +25,30 @@ class DataStudents extends Component {
 
   loadData = () => {
     let classID = this.props.match.params.classID;
+    this.setState({
+      loading: true
+    })
     fetch(ApiConfig.API_URL + '/Students/GetAllStudentsByClassID.php?class_id=' + classID)
       .then(res => res.json())
       .then(response => {
         this.setState({
-          students: response.data
+          students: response.data,
+          loading: false
         })
       })
       .catch(err => console.log(err))
   }
   componentDidUpdate() {
-    $(document).ready(function () {
-      $('#show-datatable').DataTable({
-        "order": [[0, 'asc']],
-        "pageLength": 25,
-        // "destroy": true,
-        retrieve: true
+    if(this.state.students.length > 0){
+      $(document).ready(function () {
+        $('#show-datatable').DataTable({
+          "order": [[0, 'asc']],
+          "pageLength": 25,
+          // "destroy": true,
+          retrieve: true
+        });
       });
-    });
+    }
   }
 
   formatDob = (dob) =>{
@@ -55,7 +62,7 @@ class DataStudents extends Component {
   }
 
   render() {
-    let { students, startIndex } = this.state;
+    let { students, startIndex, loading } = this.state;
     let {classID} = this.props.match.params;
     return (
       <Container fluid className="customFontsize data-students">
@@ -103,7 +110,16 @@ class DataStudents extends Component {
                     )
                   })
                   :
-                  null
+                  <tr>
+                    <td colSpan='7' style={{textAlign: 'center'}}>
+                      {
+                        loading ? 
+                        <Spinner color="primary"/>
+                        :
+                        <span>Chưa có dữ liệu</span>
+                      }
+                    </td>
+                  </tr>
                 }
               </tbody>
             </Table>
