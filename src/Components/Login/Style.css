@@ -1,9 +1,8 @@
 @import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
- .login{
-    background: linear-gradient(120deg, #2498db91, #8e44ad70);
+.login{
     height: 100vh;
     width: 100vw;
-} 
+}  
 .login-box {
     width: 320px;
     height: 345px;

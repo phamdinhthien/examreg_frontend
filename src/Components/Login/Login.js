@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as ApiConfig from '../../api/ConfigApi';
 import './Style.css';
+import ParticlesContainer from './ParticlesContainer';
 class Login extends Component {
     constructor(pros) {
         super(pros)
@@ -10,7 +11,7 @@ class Login extends Component {
             loading: false
         }
     }
-    componentWillMount(){
+    componentWillMount() {
         localStorage.setItem('access_token_examreg', '');
     }
     onChange = (e) => {
@@ -35,13 +36,14 @@ class Login extends Component {
         document.getElementById('password').setAttribute('type', 'text');
 
     }
-    onMouseUp = () =>{
+    onMouseUp = () => {
         document.getElementById('eye-password').className = ('fa fa-eye-slash')
         document.getElementById('password').setAttribute('type', 'password');
-        
+
     }
     render() {
         return (
+            <ParticlesContainer>
             <div className="container-fluid login">
                 <div className="login-box">
                     <div className="account-icon">
@@ -49,12 +51,12 @@ class Login extends Component {
                     </div>
                     <form onSubmit={this.submitForm}>
                         <div className="box">
-                            
+                            <i className="fa fa-user" aria-hidden="true"></i>
                             <input type="text" placeholder="Username" name="username" value={this.state.username} onChange={this.onChange} required />
                         </div>
                         <div className="box">
-                        <i className="fa fa-eye-slash" id="eye-password"  aria-hidden="true" onMouseDown={this.onMouseDown} onMouseUp={this.onMouseUp}></i>
-                        <input type="password" id="password" placeholder="Password" name="password" value={this.state.password} onChange={this.onChange} required />
+                            <i className="fa fa-eye-slash" id="eye-password" aria-hidden="true" onMouseDown={this.onMouseDown} onMouseUp={this.onMouseUp}></i>
+                            <input type="password" id="password" placeholder="Password" name="password" value={this.state.password} onChange={this.onChange} required />
                         </div>
                         {!this.state.loading
                             ?
@@ -62,7 +64,7 @@ class Login extends Component {
                                 <input className="btn-login" type="submit" value="Đăng Nhập" />
                             </div>
                             :
-                            <div style={{textAlign: "center"}}>
+                            <div style={{ textAlign: "center" }}>
                                 <div className="spinner-border text-success"></div>
                             </div>
                         }
@@ -70,6 +72,7 @@ class Login extends Component {
                     </form>
                 </div>
             </div>
+            </ParticlesContainer>
         );
     }
 }

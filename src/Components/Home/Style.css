@@ -174,16 +174,19 @@ img {
     z-index: 2;
     transform: translateY(120px);
     border-radius: 0.26rem;
+    
 }
 .box-home .home:hover .face.face1{
     background: linear-gradient(90deg, rgb(72, 177, 191), rgb(103, 126, 189));
     transform: translateY(10px);
     transition: 0.5s;
+
 }
 .box-home .home .face.face1 .content{
   transition: 0.5s;
   opacity: 0.8;
   height: 120px;
+  -webkit-box-reflect: below 2px linear-gradient(transparent, transparent, #004);
 }
 .box-home .home .face.face1 .content h3{
       margin: 10px 0;
@@ -263,6 +266,7 @@ img {
     height: 398px;
     width: 298px;
     object-fit: cover;
+    /* -webkit-box-reflect: below 2px linear-gradient(transparent, transparent, #004); */
  }
  .author:hover .authorImg{
      transform: rotateY(-125deg);
