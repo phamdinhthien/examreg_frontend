@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Students from './Components/ManageStudent/ManageClass';
 import Exams from './Components/ManageExam/ManageExam';
-import DataStudents from './Components/ManageStudent/DataStudents/DataStudents';
+import DataStudents from './Components/ManageStudent/Tables/DataStudents';
 import Login from './Components/Login/Login';
 import Home from './Components/Home/Home';
 
@@ -18,12 +18,17 @@ const routes = [
     },
     {
         path: '/exams',
-        exact: false,
+        exact: true,
         component: Exams
     },
     {
         path: '/students/manage/:courseID/:classID',
         exact: false,
+        component: DataStudents
+    },
+    {
+        path: '/exams/subject/manage/:semesterID',
+        exact: true,
         component: DataStudents
     },
     {

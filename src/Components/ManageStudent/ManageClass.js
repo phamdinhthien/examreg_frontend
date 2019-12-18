@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import DataStudents from "./DataStudents/DataStudents";
+import DataStudents from "./Tables/DataStudents";
 import { Collapse, Row, Card, CardImg, CardText, CardBody, CardHeader, Button, Badge } from "reactstrap";
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import AddCourseBtn from './Buttons/Course/AddCourseBtn';

@@ -4,7 +4,7 @@ import { Container, Collapse, CardBody, CardHeader } from 'reactstrap';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import AddShiftExam from './Buttons/Examtime/AddShiftExam';
 import EditTableExam from './Buttons/Examtime/EditTableExam';
-import DataExam from './DataExamtimes/DataExamtimes';
+import DataExam from './Tables/DataExamtimes';
 import AddExam from './Buttons/Semester/AddSemester';
 import DeleteExam from './Buttons/Semester/DeleteSemester';
 import UpdateExam from './Buttons/Semester/UpdateSemester';

@@ -20,14 +20,14 @@ class ImportExcelBtn extends Component {
 
     componentDidUpdate() {
         $(document).ready(function () {
-          $('#show-datatable-1, #show-datatable-2').DataTable({
-            "order": [[0, 'asc']],
-            "pageLength": 25,
-            // "destroy": true,
-            retrieve: true
-          });
+            $('#show-datatable-1, #show-datatable-2').DataTable({
+                "order": [[0, 'asc']],
+                "pageLength": 25,
+                // "destroy": true,
+                retrieve: true
+            });
         });
-      }
+    }
 
     toggleModal = () => {
         this.setState({
@@ -66,7 +66,7 @@ class ImportExcelBtn extends Component {
                         studentAdded: response.datas
                     })
                 }
-                // } else {
+                // else {
                 //     this.setState({
                 //         checkStudentModal: false,
                 //         studentAdded:response.datas
@@ -91,10 +91,12 @@ class ImportExcelBtn extends Component {
         this.setState({
             modal: false
         })
+        alertTextCustom("Thêm file thành công", "#28a745");
+        this.props.loadData();
     }
 
     render() {
-        let { modal, studentsExisted, studentAdded} = this.state;
+        let { modal, studentsExisted, studentAdded } = this.state;
         return (
             <div>
                 <Button color="primary" onClick={this.toggleModal} >Thêm File Excel</Button>
@@ -124,7 +126,7 @@ class ImportExcelBtn extends Component {
                 <Modal isOpen={this.state.checkStudentModal} style={{ maxWidth: "90%", top: 0 }}>
                     <ModalHeader>Chi Tiết Thêm File Excel</ModalHeader>
                     <ModalBody className="row">
-                    <div className="col-12">
+                        <div className="col-12">
                             <div className="card">
                                 <div className="card-header" id="studentAdded-card-header">Sinh Viên Đã Được Thêm</div>
                                 <div className="card-body mt-3">
@@ -144,10 +146,10 @@ class ImportExcelBtn extends Component {
                                                     </tr>
                                                     )
                                                 })
-                                                : 
+                                                :
                                                 <tr>
-                                                    <td style={{textAlign: 'center'}}>Không có dữ liệu</td>
-                                                    <td style={{textAlign: 'center'}}>Không có dữ liệu</td>
+                                                    <td style={{ textAlign: 'center' }}>Không có dữ liệu</td>
+                                                    <td style={{ textAlign: 'center' }}>Không có dữ liệu</td>
                                                 </tr>
                                             }
                                         </tbody>
@@ -176,10 +178,10 @@ class ImportExcelBtn extends Component {
                                                     </tr>
                                                     )
                                                 })
-                                                : 
+                                                :
                                                 <tr>
-                                                    <td style={{textAlign: 'center'}}>Không có dữ liệu</td>
-                                                    <td style={{textAlign: 'center'}}>Không có dữ liệu</td>
+                                                    <td style={{ textAlign: 'center' }}>Không có dữ liệu</td>
+                                                    <td style={{ textAlign: 'center' }}>Không có dữ liệu</td>
                                                 </tr>
                                             }
                                         </tbody>
