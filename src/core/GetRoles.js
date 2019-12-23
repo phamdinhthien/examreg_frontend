@@ -8,7 +8,7 @@ export const getCurrentRoles = () => {
     let token = localStorage.getItem('access_token');
     if(token){
     let j = parseJwt(token);
-    let roles = JSON.parse(j.sub).roles[0];
+    let roles = j.role;
     return roles;
     }
 }

@@ -9,32 +9,38 @@ const routes = [
     {
         path: '/login',
         exact: false,
-        component: Login
+        component: Login,
+        role: 0
     },
     {
         path: '/students',
         exact: true,
-        component: Students
+        component: Students,
+        role: 1
     },
     {
         path: '/exams',
         exact: true,
-        component: Exams
+        component: Exams,
+        role: 1
     },
     {
         path: '/students/manage/:courseID/:classID',
         exact: false,
-        component: DataStudents
+        component: DataStudents,
+        role: 1
     },
     {
         path: '/exams/subject/manage/:semesterID',
         exact: true,
-        component: DataStudents
+        component: DataStudents,
+        role: 1
     },
     {
         path: '/home',
         exact: false,
-        component: Home
+        component: Home,
+        role: 0
     }
 ]
 

@@ -7,11 +7,13 @@ import {
   DropdownItem,
   NavbarText
 } from 'reactstrap';
-var classNames = require('classnames');
+import { getCurrentRoles, getUserId } from '../../core/GetRoles';
 
+var classNames = require('classnames');
+let role = getCurrentRoles();
 const menus = [
-  { label: "Quản Lý Sinh Viên", to: "/students", exact: false },
-  { label: "Quản Lý Kì Thi", to: "/exams", exact: false },
+  { label: "Quản Lý Sinh Viên", to: "/students", exact: false, display: role == 1},
+  { label: "Quản Lý Kì Thi", to: "/exams", exact: false, display: role == 1 },
 ]
 class Menu extends Component {
 handleLogout = () =>{
@@ -30,7 +32,9 @@ handleLogout = () =>{
           <div className="navbar-nav">
             {
               menus.map((m, index) => {
-                return <Link className={ classNames('nav-item nav-link', {'activeMenu': window.location.pathname == m.to} ) } style={{color:"#fff  ", fontWeight:"700", marginRight:"20px", padding:"5px 0px" }} key={index} to={m.to} onClick={() => this.setState({ isShowMenu: false })}>{m.label}</Link>
+                return <Link className={ classNames('nav-item nav-link', {'activeMenu': window.location.pathname == m.to} ) } 
+                  style={{color:"#fff  ", fontWeight:"700", marginRight:"20px", padding:"5px 0px", display: m.display?'block':'none' }} key={index} to={m.to} 
+                  onClick={() => this.setState({ isShowMenu: false })}>{m.label}</Link>
               })
             }
           </div>

@@ -3,7 +3,7 @@ import { Redirect, Route } from 'react-router-dom';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   var isLoggedIn = false;
-  const access_token = localStorage.getItem('access_token_examreg');
+  const access_token = localStorage.getItem('access_token');
   if(!access_token){
     isLoggedIn = false
   }else {
