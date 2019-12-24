@@ -8,6 +8,7 @@ import {
   NavbarText
 } from 'reactstrap';
 import { getCurrentRoles, getUserId } from '../../core/GetRoles';
+import BreadCumber from './BreadCumber';
 
 var classNames = require('classnames');
 let role = getCurrentRoles();
@@ -59,7 +60,7 @@ handleLogout = () =>{
           <span className="navbar-toggler-icon"></span>
         </button>
       </nav>
-
+       <BreadCumber/>
       </div>
 
     );

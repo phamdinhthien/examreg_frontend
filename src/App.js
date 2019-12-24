@@ -6,6 +6,14 @@ import DefaultLayout from './Components/DefaultLayout/DefaultLayout';
 import Login from './Components/Login/Login';
 import Alert from './core/Alert';
 import { setAlert } from './core/Controller';
+import Home from './Components/Home/Home';
+import Breadcrumbs from './core/Breadcumbs';
+
+const Student = (props) => (
+  <div>
+    <h2>Student</h2>
+  </div>
+)
 class App extends Component {
   constructor(props) {
     super(props);
@@ -16,16 +24,15 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
-        <Router >
-          <Switch>
-            <Redirect exact from="/" to="/home" />
-            <Route exact path="/login" name="Login Page" component={Login} />
-            <PrivateRoute path="/" name="Home" component={DefaultLayout} />
-          </Switch>
-        </Router>
+      <Router >
+        {this.props.children}
+        <Switch>
+          <Redirect exact from="/" to="/home" />
+          <Route exact path="/login" name="Login Page" component={Login} />
+          <PrivateRoute path="/" name="Home" component={DefaultLayout} />
+        </Switch>
         <Alert text="none" ref={this.alert} />
-      </div>
+      </Router>
     )
   }
 }

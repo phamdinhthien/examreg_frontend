@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
 import './Style.css';
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 
+var Breadcrumbs = require('react-breadcrumbs');
 
-class BreadCumber extends Component {
-
+class BreadCrumber extends Component {
     render() {
         return (
-            <div className="">
-                <nav className="" aria-label="breadcrumb">
-                    <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="/" className="breadcrumb-link-active">Home</a></li>
-                        <li className="breadcrumb-item"><a href="/students" className="breadcrumb-link">Students</a></li>
-                        <li className="breadcrumb-item"><a href="/exams" className="breadcrumb-link">Exams</a></li>
-                    </ol>
-                </nav>
+        <div>
+        {/* <Breadcrumbs
+          routes={this.props.routes}
+        /> */}
             </div>
-        )
+        );
     }
 }
 
-export default BreadCumber;
+export default BreadCrumber;
