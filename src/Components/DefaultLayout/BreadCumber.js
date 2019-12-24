@@ -8,10 +8,7 @@ class BreadCrumber extends Component {
     render() {
         return (
         <div>
-        {/* <Breadcrumbs
-          routes={this.props.routes}
-        /> */}
-            </div>
+        </div>
         );
     }
 }

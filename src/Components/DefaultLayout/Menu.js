@@ -26,8 +26,8 @@ handleLogout = () =>{
       <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{background:"linear-gradient(90deg,#48b1bf,#677ebd)" ,marginBottom:"50px"}}> 
       <img src="https://img.icons8.com/doodle/100/000000/brick.png"></img>
-        <a href="/home" className="navbar-brand" style={{fontWeight:"800", padding:"4px 0px"}}>
-        ABCuniversity</a>
+        <Link to="/home" className="navbar-brand" style={{fontWeight:"800", padding:"4px 0px"}}>
+        ABCuniversity</Link>
 
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
