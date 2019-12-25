@@ -30,7 +30,7 @@ class DataSubjectClass extends Component {
             <tr>
               <th scope="row">2</th>
               <td>Toán rời rạc</td>
-              <td>INT2203-24</td>
+              <td>INT2205</td>
               <td>40</td>
               <td>20</td>
               <td className="edit"><EditSubjectClass /></td>
@@ -38,8 +38,8 @@ class DataSubjectClass extends Component {
             <tr>
               <th scope="row">3</th>
               <td>Cơ Nhiệt</td>
-              <td>INT2203-24</td>
-              <td>40</td>
+              <td>INT2204</td>
+              <td>50</td>
               <td>23</td>
               <td className="edit"><EditSubjectClass /></td>
             </tr>

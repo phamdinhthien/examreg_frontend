@@ -67,4 +67,4 @@ class EditSubjectClass extends Component {
         );
 }
 }
-export default EditSubject;
+export default EditSubjectClass;

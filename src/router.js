@@ -4,6 +4,7 @@ import Exams from './Components/ManageExam/ManageExam';
 import DataStudents from './Components/ManageStudent/Tables/DataStudents';
 import Login from './Components/Login/Login';
 import Home from './Components/Home/Home';
+import DataSubjectClass from './Components/ManageExam/Tables/DataSubjectClass';
 
 const routes = [
     {
@@ -33,7 +34,7 @@ const routes = [
     {
         path: '/exams/subject/manage/:semesterID',
         exact: true,
-        component: DataStudents,
+        component: DataSubjectClass,
         role: 1
     },
     {
