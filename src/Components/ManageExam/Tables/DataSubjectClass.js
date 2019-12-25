@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import { Table, Container } from 'reactstrap';
 import EditSubjectClass from '../Buttons/SubjectClass/EditSubjectClass';
+import AddClassCode from '../Buttons/SubjectClass/AddClassCode'
 class DataSubjectClass extends Component {
   componentDidMount() {
   }
   render() {
     return (
       <div className="container">
+        <AddClassCode/>
         <Table striped>
           <thead>
             <tr>
               <th>STT</th>
-              <th>Học Phần</th>
+              <th>Tên Học Phần</th>
               <th>Mã Học Phần</th>
               <th>Số Lượng Sinh Viên</th>
               <th>Lớp Học Phần</th>
