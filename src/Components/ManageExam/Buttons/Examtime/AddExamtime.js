@@ -2,7 +2,7 @@ import React from 'react';
 import { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
 
-class AddShiftExam extends Component {
+class AddExamtime extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -61,4 +61,4 @@ class AddShiftExam extends Component {
   }
 }
 
-export default AddShiftExam;
+export default AddExamtime;

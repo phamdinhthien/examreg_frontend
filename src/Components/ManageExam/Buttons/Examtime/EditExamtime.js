@@ -3,7 +3,7 @@ import { Badge } from 'reactstrap';
 import {useState} from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter,Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
-class EditTableExam extends Component {
+class EditExamtime extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -75,4 +75,4 @@ class EditTableExam extends Component {
         );
 }
 }
-export default EditTableExam;
+export default EditExamtime;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Table, Container } from 'reactstrap';
-import EditTableExam from '../Buttons/Examtime/EditExamtime';
+import EditExamtime from '../Buttons/Examtime/EditExamtime';
+
 class ManageExam extends Component {
   componentDidMount() {
   }
@@ -27,7 +28,7 @@ class ManageExam extends Component {
               <td>201-G2</td>
               <td>40/42</td>
               <td>14:00-17/09/2019</td>
-              <td className="edit"><EditTableExam /></td>
+              <td className="edit"><EditExamtime /></td>
             </tr>
             <tr>
               <th scope="row">2</th>
@@ -36,7 +37,7 @@ class ManageExam extends Component {
               <td>201-G2</td>
               <td>40/42</td>
               <td>8:00-18/09/2019</td>
-              <td className="edit"><EditTableExam /></td>
+              <td className="edit"><EditExamtime /></td>
             </tr>
             <tr>
               <th scope="row">3</th>
@@ -45,7 +46,7 @@ class ManageExam extends Component {
               <td>201-G2</td>
               <td>40/42</td>
               <td>10:00-18/09/2019</td>
-              <td className="edit"><EditTableExam /></td>
+              <td className="edit"><EditExamtime /></td>
             </tr>
             <tr>
               <th scope="row">4</th>
@@ -54,7 +55,7 @@ class ManageExam extends Component {
               <td>201-G2</td>
               <td>40/42</td>
               <td>14:00-19/09/2019</td>
-              <td className="edit"><EditTableExam /></td>
+              <td className="edit"><EditExamtime /></td>
             </tr>
             <tr>
               <th scope="row">5</th>
@@ -63,7 +64,7 @@ class ManageExam extends Component {
               <td>201-GĐ2</td>
               <td>40/42</td>
               <td>10:00-20/09/2019</td>
-              <td className="edit"><EditTableExam /></td>
+              <td className="edit"><EditExamtime /></td>
             </tr>
             <tr>
               <th scope="row">6</th>
@@ -72,7 +73,7 @@ class ManageExam extends Component {
               <td>205-G2</td>
               <td>40/42</td>
               <td>14:00-20/09/2019</td>
-              <td className="edit"><EditTableExam /></td>
+              <td className="edit"><EditExamtime /></td>
             </tr>
           </tbody>
         </Table>
