@@ -151,13 +151,6 @@ img {
 .card{
   margin-left: 0;
 }
-.course-card {
-  /* overflow: hidden; */
-  /* border: none !important; */
-}
-.course-card > .card-header{
-  /* border: none !important; */
-}
 #card-header{
   margin: 0;
   padding: 0;
