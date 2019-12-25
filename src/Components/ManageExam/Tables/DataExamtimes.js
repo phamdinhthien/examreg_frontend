@@ -1,85 +1,96 @@
 import React, { Component } from 'react';
 import { Table, Container } from 'reactstrap';
 import EditExamtime from '../Buttons/Examtime/EditExamtime';
+import * as ApiConfig from '../../../api/ConfigApi';
 
-class ManageExam extends Component {
-  componentDidMount() {
+const $ = require('jquery')
+$.DataTable = require('datatables.net')
+
+class DateExamtime extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      examtimes: [],
+      startIndex: 1
+    }
   }
+  componentDidMount() {
+    let { semesterID } = this.props;
+    fetch(ApiConfig.API_URL + '/Examtimes/GetAllExamtimesBySemesterId.php?semester_id=' + semesterID)
+      .then(res => res.json())
+      .then(response => {
+        this.setState({
+          examtimes: response.data,
+        })
+      })
+      .catch(err => console.log(err))
+  }
+
+  formatDob = (dob) =>{
+    let newDOB = new Date(dob);
+    let date = newDOB.getDate();
+    date = date < 10 ? '0'+date : date;
+    let month = newDOB.getMonth() + 1;
+    month = month < 10 ? '0'+month : month;
+    let year = newDOB.getFullYear();
+    return `${date}/${month}/${year}`;
+  }
+
+  componentDidUpdate() {
+    if(this.state.examtimes.length > 0){
+      $(document).ready(function () {
+        $('#show-datatable').DataTable({
+          "order": [[0, 'asc']],
+          "pageLength": 25,
+          // "destroy": true,
+          retrieve: true
+        });
+      });
+    }
+  }
+
   render() {
+    let { examtimes, startIndex } = this.state;
     return (
-      <div className="container">
-        <Table striped>
-          <thead>
-            <tr>
-              <th>STT</th>
-              <th>Môn Thi</th>
-              <th>Mã Học Phần</th>
-              <th>Phòng Thi</th>
-              <th>Số Lượng Dự Thi</th>
-              <th>Ngày Thi</th>
-              <th>Chỉnh Sửa</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Đại số</td>
-              <td>INT2203-24</td>
-              <td>201-G2</td>
-              <td>40/42</td>
-              <td>14:00-17/09/2019</td>
-              <td className="edit"><EditExamtime /></td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Toán rời rạc</td>
-              <td>INT2203-24</td>
-              <td>201-G2</td>
-              <td>40/42</td>
-              <td>8:00-18/09/2019</td>
-              <td className="edit"><EditExamtime /></td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Cơ Nhiệt</td>
-              <td>INT2203-24</td>
-              <td>201-G2</td>
-              <td>40/42</td>
-              <td>10:00-18/09/2019</td>
-              <td className="edit"><EditExamtime /></td>
-            </tr>
-            <tr>
-              <th scope="row">4</th>
-              <td>Giải Tích</td>
-              <td>INT2203-24</td>
-              <td>201-G2</td>
-              <td>40/42</td>
-              <td>14:00-19/09/2019</td>
-              <td className="edit"><EditExamtime /></td>
-            </tr>
-            <tr>
-              <th scope="row">5</th>
-              <td>Tư Tưởng HCM</td>
-              <td>INT2203-24</td>
-              <td>201-GĐ2</td>
-              <td>40/42</td>
-              <td>10:00-20/09/2019</td>
-              <td className="edit"><EditExamtime /></td>
-            </tr>
-            <tr>
-              <th scope="row">6</th>
-              <td>Lập trình OOP</td>
-              <td>INT2203-24</td>
-              <td>205-G2</td>
-              <td>40/42</td>
-              <td>14:00-20/09/2019</td>
-              <td className="edit"><EditExamtime /></td>
-            </tr>
-          </tbody>
-        </Table>
-      </div>
+      <Table striped hover responsive id="show-datatable">
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Tên Môn Thi</th>
+            <th>Mã Học Phần</th>
+            <th>Phòng Thi</th>
+            <th>Số Lượng Dự Thi</th>
+            <th>Ngày Thi</th>
+            <th>Chỉnh Sửa</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            examtimes.length > 0
+              ?
+              examtimes.map((e, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{startIndex++}</td>
+                    <td>{e.subjectName}</td>
+                    <td>{e.subjectclassCode}</td>
+                    <td>{e.examroomName}</td>
+                    <td>0/{e.amountComputer}</td>
+                    <td>{`${e.startTime} - ${this.formatDob(e.date)}`}</td>
+                    <td className="edit"><EditExamtime subjectsBySemesterId={this.props.subjectsBySemesterId} /></td>
+                  </tr>
+                )
+              })
+              :
+              <tr>
+                <td colSpan="7" style={{ textAlign: "center" }}>Chưa có dữ liệu</td>
+              </tr>
+          }
+
+        </tbody>
+      </Table>
     );
   }
 
 }
-export default ManageExam;
+export default DateExamtime;

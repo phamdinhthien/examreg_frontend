@@ -163,7 +163,7 @@ class ManageExam extends Component {
                                       subjectsBySemesterId[semester.id].map((subject, i) => {
                                         return (
                                           <div key={i}>
-                                            <Link to={`exams/subject/manage/${semester.id}`}>
+                                            <Link to={`exams/subject/manage/${semester.id}/${subject.id}`}>
                                               <div style={{ position: "relative" }}>
                                                 <div id="card-item">
                                                   <p>{subject.name} - {subject.code}</p>
@@ -182,8 +182,8 @@ class ManageExam extends Component {
                                   }
                                 </TabPane>
                                 <TabPane tabId="2">
-                                      <AddExamtime />
-                                      <DataExam />
+                                  <AddExamtime subjects={subjectsBySemesterId[semester.id]} semesterID={semester.id}/>
+                                  <DataExam subjectsBySemesterId={subjectsBySemesterId} semesterID={semester.id} />
                                 </TabPane>
                               </TabContent>
                             </div>
