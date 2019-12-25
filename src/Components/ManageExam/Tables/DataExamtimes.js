@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Table, Container } from 'reactstrap';
-import EditTableExam from '../Buttons/Examtime/EditTableExam';
+import EditTableExam from '../Buttons/Examtime/EditExamtime';
 class ManageExam extends Component {
   componentDidMount() {
   }
@@ -9,7 +9,6 @@ class ManageExam extends Component {
       <div className="container">
         <Table striped>
           <thead>
-            <tr><th>Ca Thi Số 1</th></tr>
             <tr>
               <th>STT</th>
               <th>Môn Thi</th>

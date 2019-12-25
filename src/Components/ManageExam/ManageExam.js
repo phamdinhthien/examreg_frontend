@@ -2,8 +2,8 @@ import React, { Component, useState } from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import { Container, Collapse, CardBody, CardHeader } from 'reactstrap';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import AddShiftExam from './Buttons/Examtime/AddShiftExam';
-import EditTableExam from './Buttons/Examtime/EditTableExam';
+import AddExamtime from './Buttons/Examtime/AddExamtime';
+import EditExamtime from './Buttons/Examtime/EditExamtime';
 import DataExam from './Tables/DataExamtimes';
 import AddExam from './Buttons/Semester/AddSemester';
 import DeleteExam from './Buttons/Semester/DeleteSemester';
@@ -182,6 +182,7 @@ class ManageExam extends Component {
                                   }
                                 </TabPane>
                                 <TabPane tabId="2">
+                                      <AddExamtime />
                                       <DataExam />
                                 </TabPane>
                               </TabContent>

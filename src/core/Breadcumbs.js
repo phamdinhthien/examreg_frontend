@@ -7,6 +7,8 @@ const breadcumbs = {
     '': <Link to="/"><i className="fa fa-home" aria-hidden="true"></i> Trang Chủ</Link>,
     'exams': <Link to="/exams">Kì Thi</Link>,
     'students': <Link to="/students">Sinh viên</Link>,
+    'students/manage': <Link to="/manage">Khóa Học</Link>,
+    'subject/manage': <Link to="/subject">Môn Thi</Link>,
 }
 
 class BreadCumbs extends Component {
