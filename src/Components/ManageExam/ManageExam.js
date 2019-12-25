@@ -182,6 +182,7 @@ class ManageExam extends Component {
                                   }
                                 </TabPane>
                                 <TabPane tabId="2">
+                                      <AddExamtime />
                                       <DataExam />
                                 </TabPane>
                               </TabContent>

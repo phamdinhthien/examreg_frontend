@@ -56,7 +56,8 @@ class Login extends Component {
                 <div className="container-fluid login">
                     <div className="login-box">
                         <div className="account-icon">
-                            <i className="fa fa-user-circle"></i>
+                        <img style={{height:"80px", width:"80px"}} src="https://img.icons8.com/doodle/100/000000/brick.png"></img>
+                        <h6>Đại Học ABCuni</h6>
                         </div>
                         <form onSubmit={this.submitForm}>
                             <div className="box">

@@ -18,7 +18,9 @@ class AddExamtime extends Component {
 
     return (
       <div>
-        <Button color="primary" onClick={this.toggle}><i className="fa fa-plus-circle" aria-hidden="true"></i> Thêm Ca Thi</Button>
+        <div className="EditButtonAddShiftExam" style={{padding:"15px 0"}}>
+        <Button color="primary" className="AddShiftExam" onClick={this.toggle}><i className="fa fa-plus mr-1" aria-hidden="true"></i> Thêm Ca Thi</Button>
+        </div>
         <Modal isOpen={modal} toggle={this.toggle} className={className}>
           <ModalHeader>Thêm Ca Thi</ModalHeader>
           <ModalBody>
