@@ -64,12 +64,12 @@ class Login extends Component {
                         <img src="https://img.icons8.com/doodle/100/000000/brick.png"></img>
                         <Link to="/home" className="navbar-brand" style={{ fontWeight: "800", padding: "4px 0px" }}>
                             ABCuniversity</Link>
-                        <h2 style={{color:"#fff"}}>Cổng Thông Tin Đào Tạo Đại Học</h2>
+                        <h2 style={{color:"#fff"}}>Hệ Thống Đăng Kí Môn Thi</h2>
                     </nav>
                         {/* Login-box chứa các yêu cầu về đệ trình form đăng nhập */}
                         <div className="login-box">
                             <div className="account-icon">
-                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                            <img style={{height:"80px", width:"80px"}} src="https://img.icons8.com/doodle/100/000000/brick.png"></img>
                             <h4>Đăng Nhập Hệ Thống</h4>
                             </div>
                             <form onSubmit={this.submitForm}>
