@@ -12,7 +12,8 @@ class DataRegister extends Component {
       examtimes: [],
       startIndex_1: 1,
       startIndex_2: 1,
-      checkedArr: []
+      checkedArr: [],
+      examtimesRegistered: []
     }
   }
   componentDidMount() {
@@ -24,6 +25,15 @@ class DataRegister extends Component {
       .then(response => {
         this.setState({
           examtimes: response.data
+        })
+      })
+      .catch(err => console.log(err))
+
+    fetch(ApiConfig.API_URL + '/Students_Examtimes/GetAllRegestered.php?semester_id=1&student_id=' + userID)
+      .then(res => res.json())
+      .then(response => {
+        this.setState({
+          examtimesRegistered: response.data
         })
       })
       .catch(err => console.log(err))
@@ -61,10 +71,10 @@ class DataRegister extends Component {
         fetch(ApiConfig.API_URL + '/Students_Examtimes/PickExamtimes.php', {
           method: 'POST',
           body: JSON.stringify(data)
-      })
+        })
           .then(res => res.json())
           .then(response => {
-             console.log(response)
+            this.loadData()
           })
           .catch(err => console.log(err))
       }
@@ -82,7 +92,7 @@ class DataRegister extends Component {
     })
   }
   render() {
-    let { examtimes, startIndex_1, startIndex_2, checkedArr } = this.state;
+    let { examtimes, startIndex_1, startIndex_2, checkedArr,examtimesRegistered } = this.state;
     return (
       <div className="container">
         <Table striped>
@@ -136,11 +146,10 @@ class DataRegister extends Component {
             </thead>
             <tbody>
               {
-                examtimes.length > 0
+                examtimesRegistered.length > 0
                   ?
-                  examtimes.map((e, index) => {
+                  examtimesRegistered.map((e, index) => {
                     return (
-                      checkedArr.indexOf(e.id) >= 0 ?
                         <tr key={index}>
                           <td>{startIndex_2++}</td>
                           <td>{e.subjectName}</td>
@@ -149,8 +158,6 @@ class DataRegister extends Component {
                           <td>{e.amountComputer}</td>
                           <td>{`${this.formatDob(e.date)} (${e.startTime} - ${e.endTime})`}</td>
                         </tr>
-                        :
-                        null
                     )
                   })
                   :
