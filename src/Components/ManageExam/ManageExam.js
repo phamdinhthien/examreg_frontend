@@ -2,10 +2,9 @@ import React, { Component, useState } from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import { Container, Collapse, CardBody, CardHeader } from 'reactstrap';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import AddExamtime from './Buttons/Examtime/AddExamtime';
 import EditExamtime from './Buttons/Examtime/EditExamtime';
-import DataExam from './Tables/DataExamtimes';
-import AddExam from './Buttons/Semester/AddSemester';
+import DataExamtimes from './Tables/DataExamtimes';
+import AddSemester from './Buttons/Semester/AddSemester';
 import DeleteExam from './Buttons/Semester/DeleteSemester';
 import UpdateExam from './Buttons/Semester/UpdateSemester';
 import AddExamSubject from './Buttons/Subject/AddExamSubject';
@@ -117,7 +116,7 @@ class ManageExam extends Component {
         <Card className="card-custom">
           <CardHeader>
             <b className="title-table"><i className="fa fa-align-justify mr-2"></i>Danh Sách Các Kì Thi</b>
-            <div className='row position-relative'> <AddExam loadData={this.loadData} /></div>
+            <div className='row position-relative'> <AddSemester loadData={this.loadData} /></div>
           </CardHeader>
           <CardBody>
             <div>
@@ -182,8 +181,7 @@ class ManageExam extends Component {
                                   }
                                 </TabPane>
                                 <TabPane tabId="2">
-                                  <AddExamtime subjects={subjectsBySemesterId[semester.id]} semesterID={semester.id}/>
-                                  <DataExam subjectsBySemesterId={subjectsBySemesterId} semesterID={semester.id} />
+                                  <DataExamtimes subjectsBySemesterId={subjectsBySemesterId} semesterID={semester.id} subjects={subjectsBySemesterId[semester.id]}/>
                                 </TabPane>
                               </TabContent>
                             </div>

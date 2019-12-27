@@ -31,7 +31,8 @@ class DataStudents extends Component {
       .then(res => res.json())
       .then(response => {
         this.setState({
-          students: response.data
+          students: response.data,
+          loading: false
         })
       })
       .catch(err => console.log(err))

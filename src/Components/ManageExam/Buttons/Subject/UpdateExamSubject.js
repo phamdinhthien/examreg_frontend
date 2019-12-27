@@ -2,6 +2,8 @@ import React from 'react';
 import { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, Spinner, Badge } from 'reactstrap';
 import * as ApiConfig from '../../../../api/ConfigApi';
+import { alertText, alertTextCustom } from '../../../../core/Controller';
+
 class UpdateExamSubject extends Component {
     constructor(props) {
         super(props);
@@ -54,10 +56,20 @@ class UpdateExamSubject extends Component {
             body: JSON.stringify(data)
         }).then(res => res.json())
             .then(response => {
-                this.setState({
-                    modal:false
-                  });
-                this.props.getAllSubjectBySemesterID(semesterID);
+                let status = response.status;
+                let message = response.message
+                if (status == 201 || status == 200) {
+                    alertTextCustom(message, "#28a745");
+                    this.setState({
+                        modal: false
+                    });
+                    this.props.getAllSubjectBySemesterID(semesterID);
+                } else if (status == 400) {
+                    alertText(message);
+                    this.setState({
+                        loading: false
+                    })
+                }
             })
             .catch(err => console.log(err))
     }

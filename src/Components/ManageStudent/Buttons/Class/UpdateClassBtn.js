@@ -60,11 +60,20 @@ class AddClass extends Component {
       body: JSON.stringify(data)
     }).then(res => res.json())
       .then(response => {
-        alertTextCustom("Cập nhật lớp học thành công", "#28a745");
-        this.props.getAllClassesByCourseID(courseID);
-        this.setState({
-          modal: false
-        })
+        let status = response.status;
+        let message = response.message
+        if (status == 201 || status == 200) {
+          alertTextCustom(message, "#28a745");
+          this.setState({
+            modal: false
+          });
+          this.props.getAllClassesByCourseID(courseID);
+        } else if (status == 400) {
+          alertText(message);
+          this.setState({
+            loading: false
+          })
+        }
       })
       .catch(err => alertText('Cập nhật lớp học không thành công'))
   }

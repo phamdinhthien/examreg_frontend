@@ -37,7 +37,7 @@ class UpdateExam extends Component {
                 .catch(err => console.log(err))
         }
     }
-    onAddSemester = () => {
+    onUpdateSemester = () => {
         this.setState({
             loading: true
         })
@@ -52,10 +52,20 @@ class UpdateExam extends Component {
             body: JSON.stringify(data)
         }).then(res => res.json())
             .then(response => {
-                this.setState({
-                    modal:false
-                  });
-                this.props.loadData();
+                let status = response.status;
+                let message = response.message
+                if (status == 201) {
+                    alertTextCustom(message, "#28a745");
+                    this.setState({
+                        modal: false
+                    });
+                    this.props.loadData();
+                } else if (status == 400) {
+                    this.setState({
+                        loading: false
+                    })
+                    alertText(message);
+                }
             })
             .catch(err => console.log(err))
     }
@@ -94,7 +104,7 @@ class UpdateExam extends Component {
                         {!this.state.loading
                             ?
                             <div>
-                                <Button color="danger" onClick={this.onAddSemester}>Lưu</Button>{' '}
+                                <Button color="danger" onClick={this.onUpdateSemester}>Lưu</Button>{' '}
                                 <Button color="secondary" onClick={this.toggle}>Hủy</Button>
                             </div>
                             :

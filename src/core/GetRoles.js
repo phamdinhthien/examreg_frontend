@@ -16,9 +16,9 @@ export const getCurrentRoles = () => {
 export const getUserId = () => {
     let token = localStorage.getItem('access_token');
     if(token){
-    let j = parseJwt(token);
-    let id = JSON.parse(j.sub).id;
-    return id;
+        let j = parseJwt(token);
+        let id = j.id;
+        return id;
     }
 }
 
