@@ -4,11 +4,7 @@ import { Table, Container, Card, CardImg, CardText, CardHeader, CardBody, Spinne
 import UpdateSubjectClass from '../Buttons/SubjectClass/UpdateSubjectClass';
 import AddClassClass from '../Buttons/SubjectClass/AddClassClass';
 import * as ApiConfig from '../../../api/ConfigApi';
-import { alertText, alertTextCustom } from '../../../core/Controller';
 import DeleteSubjectClass from '../Buttons/SubjectClass/DeleteSubjectClass';
-import { Table, Container } from 'reactstrap';
-import EditSubjectClass from '../Buttons/SubjectClass/EditSubjectClass';
-import AddClassCode from '../Buttons/SubjectClass/AddClassCode';
 // Chứa các trường dữ liệu của bảng Học Phần
 class DataSubjectClass extends Component {
   constructor(props) {
