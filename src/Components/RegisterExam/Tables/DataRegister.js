@@ -53,6 +53,8 @@ class DataRegister extends Component {
     for (let i = 0; i < checkeds.length; i++) {
       if (checkeds[i].checked) {
         checkedArr[i] = checkeds[i].value;
+      } else {
+        checkedArr[i] = '';
       }
     }
     this.setState({
@@ -83,13 +85,13 @@ class DataRegister extends Component {
     }
   }
   onRemove = (id) => {
-    let { checkedArr } = this.state;
-    let index = checkedArr.indexOf(id);
-    console.log(index)
-    let newCheckArr = checkedArr.splice(index, 1);
-    this.setState({
-      checkedArr: newCheckArr
-    })
+    fetch(ApiConfig.API_URL + '/Students_Examtimes/DeleteOneExamtime.php?id=' + id)
+      .then(res => res.json())
+      .then(response => {
+        console.log(response)
+        this.loadData();
+      })
+      .catch(err => console.log(err))
   }
   render() {
     let { examtimes, startIndex_1, startIndex_2, checkedArr,examtimesRegistered } = this.state;
@@ -142,6 +144,7 @@ class DataRegister extends Component {
                 <th>Phòng Thi</th>
                 <th>Số Lượng Dự Thi</th>
                 <th>Ngày Thi</th>
+                <th>Hủy Bỏ</th>
               </tr>
             </thead>
             <tbody>
@@ -157,6 +160,7 @@ class DataRegister extends Component {
                           <td>{e.examroomName}</td>
                           <td>{e.amountComputer}</td>
                           <td>{`${this.formatDob(e.date)} (${e.startTime} - ${e.endTime})`}</td>
+                          <td><button onClick={()=>{this.onRemove(e.id)}} style={{border: 'none', color: '#dc3545', background: 'none'}}><i className="fa fa-trash mr-1"></i></button></td>
                         </tr>
                     )
                   })
