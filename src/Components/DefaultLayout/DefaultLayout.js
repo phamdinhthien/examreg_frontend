@@ -10,9 +10,14 @@ class DefaultLayout extends Component {
 
   render() {
     return (
+      // Hiển Thị Thanh NavBar gồm nút trang chủ, quản lý sinh viên, quản lý kì thi
+      
       <div className="App">
-        <Menu />
+        <Menu /> 
+
+         {/* Breadcumbs giúp xác định vị trí trang đang ở đâu */}
         <Breadcrumbs />
+        {/* Phân route của 2 chức năng chính của admin page */}
         <Switch>
           {routes.map((route, idx) => {
             return route.component ? (

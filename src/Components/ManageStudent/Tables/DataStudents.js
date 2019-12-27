@@ -8,9 +8,9 @@ import AddStudentBtn from '../Buttons/Student/AddStudentBtn';
 
 const $ = require('jquery')
 $.DataTable = require('datatables.net')
-
+// Các dữ liệu chính trong bảng sinh viên
 class DataStudents extends Component {
-
+  // Khởi tạo constructor
   constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +22,7 @@ class DataStudents extends Component {
   componentDidMount() {
     this.loadData();
   }
-
+  // load Date
   loadData = () => {
     let classID = this.props.match.params.classID;
     this.setState({

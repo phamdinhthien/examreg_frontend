@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Table, Container } from 'reactstrap';
 import EditSubjectClass from '../Buttons/SubjectClass/EditSubjectClass';
-import AddClassCode from '../Buttons/SubjectClass/AddClassCode'
+import AddClassCode from '../Buttons/SubjectClass/AddClassCode';
+// Chứa các trường dữ liệu của bảng Học Phần
 class DataSubjectClass extends Component {
   componentDidMount() {
   }

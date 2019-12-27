@@ -1,3 +1,4 @@
+// Kiểm tra nhập liệu
 export const formatDob = (dob) => {
     let newDOB = new Date(dob);
     let date = newDOB.getDate();

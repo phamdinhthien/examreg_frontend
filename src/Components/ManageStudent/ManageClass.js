@@ -10,8 +10,9 @@ import UpdateClassBtn from './Buttons/Class/UpdateClassBtn';
 import DeleteClassBtn from './Buttons/Class/DeleteClassBtn';
 import * as ApiConfig from '../../api/ConfigApi';
 import './Style.css';
-
+// Quản lý Lớp học
 class ManageClass extends Component {
+  // Khởi tạo Constructor
   constructor(props) {
     super(props);
     this.state = {
@@ -29,7 +30,7 @@ class ManageClass extends Component {
   componentDidMount() {
     this.loadData();
   }
-
+  // Load Data
   loadData = () => {
     fetch(ApiConfig.API_URL + '/Courses/GetAllCourses.php')
       .then(res => res.json())
@@ -72,7 +73,7 @@ class ManageClass extends Component {
       })
       .catch(err => console.log(err))
   }
-
+  // set toggle
   toggle = (index) => {
     let collapse = this.state.collapse;
     collapse[index] = !collapse[index];

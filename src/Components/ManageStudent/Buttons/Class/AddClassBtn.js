@@ -3,6 +3,7 @@ import { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, Spinner } from 'reactstrap';
 import { alertText, alertTextCustom } from '../../../../core/Controller';
 import * as ApiConfig from '../../../../api/ConfigApi';
+// Thêm lớp học
 class AddClass extends Component {
   constructor(props) {
     super(props);

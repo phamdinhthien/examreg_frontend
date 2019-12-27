@@ -4,8 +4,9 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, La
 import { alertText, alertTextCustom } from '../../../../core/Controller';
 import * as ApiConfig from '../../../../api/ConfigApi';
 import {formatDob, removeSpace} from './CommonStudentBtn';
-
+// Cập nhật thông tin sinh viên
 class UpdateStudentBtn extends Component {
+  // khởi tạo constructor
   constructor(props) {
     super(props);
     this.state = {
@@ -19,6 +20,7 @@ class UpdateStudentBtn extends Component {
       invaldidDob: false
     }
   }
+  //set toggle
   toggle = () => {
     let { studentID } = this.props;
     this.setState({
@@ -59,7 +61,7 @@ class UpdateStudentBtn extends Component {
       mail: document.getElementById('code').value + "@vnu.edu.vn"
     })
   }
-
+  // Cập nhật thông tin sinh viên
   onUpdateStudent = () => {
     let { studentID } = this.props;
     let { code, name, mail, dob } = this.state;
@@ -85,7 +87,7 @@ class UpdateStudentBtn extends Component {
         .catch(err => alertText('Cập nhât sinh viên không thành công'));
     }
   }
-
+  // Kiểm tra nhập liệu
   checkValue = () => {
     let { code, name, dob } = this.state;
     if(!name){

@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Badge } from 'reactstrap';
 import { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-
+// Sửa Mã Học Phần
 class EditSubjectClass extends Component {
+    // khởi tạo constructor
     constructor(props) {
         super(props);
         this.state = {
@@ -11,9 +12,11 @@ class EditSubjectClass extends Component {
             modal1: false,
         }
     }
+    // set toggle
     toggle = () => {
         this.setState({ modal: !this.state.modal })
     }
+    //set toggle1
     toggle1 = () => {
         this.setState({ modal1: !this.state.modal1 })
     }

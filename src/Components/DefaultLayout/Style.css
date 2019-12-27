@@ -7,3 +7,8 @@
     background-color: #e9ecef;
     border-radius: 0.25rem;
 }
+@media screen and (max-width: 1091px) {
+    .navbar-brand{
+        color: blueviolet !important;
+    }
+}

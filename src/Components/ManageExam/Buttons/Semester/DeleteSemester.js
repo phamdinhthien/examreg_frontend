@@ -3,8 +3,9 @@ import { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, Spinner, Badge } from 'reactstrap';
 import { alertText, alertTextCustom } from '../../../../core/Controller';
 import * as ApiConfig from '../../../../api/ConfigApi';
-
+// Chức năng Xóa Kì Thi
 class DeleteExam extends Component {
+    // khởi tạo constructor
     constructor(props) {
         super(props);
         this.state = {
@@ -12,6 +13,7 @@ class DeleteExam extends Component {
             loading: false
         }
     }
+    // set toggle
     toggle = (e) => {
         e.preventDefault();
         this.props.setCollapse(this.props.index);
@@ -21,6 +23,7 @@ class DeleteExam extends Component {
             loading: false
         });
     }
+    // Xóa kì thi
     onDeleteExam = () => {
         this.setState({
             loading: true

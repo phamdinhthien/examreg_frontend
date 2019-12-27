@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Table, Container } from 'reactstrap';
 import EditExamtime from '../Buttons/Examtime/EditExamtime';
-
+// Chứa các trường dữ liệu của bảng quản lý ca thi
 class ManageExam extends Component {
   componentDidMount() {
   }

@@ -2,8 +2,9 @@ import React from 'react';
 import { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
 import * as ApiConfig from '../../../../api/ConfigApi';
-
+// CHức năng thêm kì thi
 class AddExam extends Component {
+  // khởi tạo constructor
   constructor(props) {
     super(props);
     this.state = {
@@ -13,7 +14,7 @@ class AddExam extends Component {
       year: ''
     }
   }
-
+  // set toggle
   toggle = () => {
     this.setState({
       modal: !this.state.modal,
@@ -22,7 +23,7 @@ class AddExam extends Component {
       year: ''
     })
   }
-
+  // thêm kì thi
   onAddSemester = () => {
     this.setState({
       loading: true

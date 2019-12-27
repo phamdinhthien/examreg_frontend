@@ -6,6 +6,7 @@ class Author extends Component {
 
     render() {
         return (
+            // Các tác giả
             <div className="container-author">
                 <h1 style={{textAlign:"center", marginTop:"2px"}}>Thiết Kế Chương Trình</h1>
                 <div className="boxAuthor">

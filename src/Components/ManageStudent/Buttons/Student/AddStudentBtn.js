@@ -4,7 +4,9 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, La
 import * as ApiConfig from '../../../../api/ConfigApi';
 import { alertText, alertTextCustom } from '../../../../core/Controller';
 import {removeSpace} from './CommonStudentBtn';
+// Thêm Sinh Viên
 class AddStudentBtn extends Component {
+  // Khởi tạo constructor
   constructor(props) {
     super(props);
     this.state = {
@@ -19,6 +21,7 @@ class AddStudentBtn extends Component {
       invaldidDob: false
     }
   }
+  // set Toggle
   toggle = () => {
     let { studentID } = this.props;
     this.setState({
@@ -59,7 +62,7 @@ class AddStudentBtn extends Component {
       mail: document.getElementById('code').value + "@vnu.edu.vn"
     })
   }
-
+  // Thêm Sinh Viên
   onAddStudent = () => {
     let { code, name, mail, dob } = this.state;
     let { classID } = this.props;
@@ -91,7 +94,7 @@ class AddStudentBtn extends Component {
     }
   }
 
-
+  // Kiểm tra dữ liệu
   checkValue = () => {
     let { code, name, dob } = this.state;
     if(!name){

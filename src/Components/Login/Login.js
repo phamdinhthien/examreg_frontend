@@ -4,6 +4,7 @@ import './Style.css';
 import ParticlesContainer from './ParticlesContainer';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 class Login extends Component {
+    // Khởi tạo constructor
     constructor(pros) {
         super(pros)
         this.state = {
@@ -20,6 +21,7 @@ class Login extends Component {
             [e.target.name]: e.target.value
         })
     }
+    // Submit Form đăng nhập
     submitForm = (e) => {
         this.setState({
             loading: true
@@ -41,11 +43,13 @@ class Login extends Component {
             })
             .catch(err => console.log(err))
     }
+    // Hiển thị mật khẩu dưới dạng text
     onMouseDown = () => {
         document.getElementById('eye-password').className = ('fa fa-eye');
         document.getElementById('password').setAttribute('type', 'text');
 
     }
+    // Hiển thi mật khẩu dưới dạng password
     onMouseUp = () => {
         document.getElementById('eye-password').className = ('fa fa-eye-slash')
         document.getElementById('password').setAttribute('type', 'password');
@@ -55,12 +59,14 @@ class Login extends Component {
         return (
             <ParticlesContainer>
                 <div className="container-fluid login">
+                    {/* Thanh Navbar chứa tên trường */}
                     <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{ background: "linear-gradient(90deg,#48b1bf,#677ebd)", marginBottom: "50px" }}>
                         <img src="https://img.icons8.com/doodle/100/000000/brick.png"></img>
                         <Link to="/home" className="navbar-brand" style={{ fontWeight: "800", padding: "4px 0px" }}>
                             ABCuniversity</Link>
                         <h2 style={{color:"#fff"}}>Cổng Thông Tin Đào Tạo Đại Học</h2>
                     </nav>
+                        {/* Login-box chứa các yêu cầu về đệ trình form đăng nhập */}
                         <div className="login-box">
                             <div className="account-icon">
                             <i class="fa fa-user-circle-o" aria-hidden="true"></i>

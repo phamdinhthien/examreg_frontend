@@ -5,7 +5,7 @@ import DataStudents from './Components/ManageStudent/Tables/DataStudents';
 import Login from './Components/Login/Login';
 import Home from './Components/Home/Home';
 import DataSubjectClass from './Components/ManageExam/Tables/DataSubjectClass';
-
+// Định tuyến trang
 const routes = [
     {
         path: '/login',

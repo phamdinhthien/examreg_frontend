@@ -1,14 +1,16 @@
 import React from 'react';
 import { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
-
+// Thêm mã Học Phần
 class AddClassCode extends Component {
+    // Khởi tạo constructor
     constructor(props) {
         super(props);
         this.state = {
             modal: false,
         }
     }
+    // set toggle
     toggle = () => {
         this.setState({ modal: !this.state.modal })
     }

@@ -13,9 +13,9 @@ import DeleteExamSubject from './Buttons/Subject/DeleteExamSubject';
 import classnames from 'classnames';
 import * as ApiConfig from '../../api/ConfigApi';
 import UpdateExamSubject from './Buttons/Subject/UpdateExamSubject';
-
+// Quản lý Kì Thi
 class ManageExam extends Component {
-
+  // khởi tạo constructor
   constructor(props) {
     super(props);
     this.state = {
@@ -35,7 +35,7 @@ class ManageExam extends Component {
   componentDidMount() {
     this.loadData();
   }
-
+  // load Data
   loadData = () => {
     let self = this;
     fetch(ApiConfig.API_URL + '/Semesters/GetAllSemesters.php')
@@ -66,7 +66,7 @@ class ManageExam extends Component {
       })
       .catch(err => { console.log(err) })
   }
-
+  // get All Subject By Semester ID
   getAllSubjectBySemesterID = (semester_id) => {
     let subjectsBySemesterId = this.state.subjectsBySemesterId;
     fetch(ApiConfig.API_URL + '/Subjects/GetAllSubjects.php?semester_id=' + semester_id)
@@ -79,18 +79,20 @@ class ManageExam extends Component {
       })
       .catch(err => console.log(err))
   }
+  // Thêm Môn Thi
   onClickAddExamSubjectBtn = (index) => {
     let collapse = this.state.collapse;
     collapse[index] = true;
     this.setState({ collapse: collapse });
   }
+  // set toggle
   toggle = (index) => {
     let collapse = this.state.collapse;
     collapse[index] = !collapse[index];
     let { childActiveTab } = this.state;
     this.setState({ collapse: collapse, childActiveTab: { ...childActiveTab, [index]: '1' } });
   };
-
+  // set collapse
   setCollapse = (index) => {
     let collapse = this.state.collapse;
     collapse[index] = false;

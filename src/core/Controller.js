@@ -1,3 +1,4 @@
+// Thiết lập alert
 var alert;
 export const setAlert = (element) => {
     alert = element;

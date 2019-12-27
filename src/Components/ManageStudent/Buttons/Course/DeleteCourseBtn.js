@@ -3,7 +3,9 @@ import { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, Spinner, Badge } from 'reactstrap';
 import { alertText, alertTextCustom } from '../../../../core/Controller';
 import * as ApiConfig from '../../../../api/ConfigApi';
+// Xóa Khóa Học
 class AddClass extends Component {
+    // Khởi tạo Contructor
     constructor(props) {
         super(props);
         this.state = {
@@ -20,6 +22,7 @@ class AddClass extends Component {
             loading: false
         });
     }
+    // Xóa khóa học
     onDeleteCourse = () => {
         this.setState({
             loading: true

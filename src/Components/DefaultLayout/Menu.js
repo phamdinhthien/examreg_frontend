@@ -11,6 +11,7 @@ import { getCurrentRoles, getUserId } from '../../core/GetRoles';
 
 
 var classNames = require('classnames');
+// phân quyền
 let role = getCurrentRoles();
 const menus = [
   { label: "Quản Lý Sinh Viên", to: "/students", exact: false, display: role == 1},
@@ -24,6 +25,7 @@ handleLogout = () =>{
   render() {
     return (
       <div>
+        {/* Thanh Navbar với 3 route chính là trang chủ, quản lý sinh viên, quản lý kì thi, nút đăng xuất */}
       <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{background:"linear-gradient(90deg,#48b1bf,#677ebd)" ,marginBottom:"50px"}}> 
       <img src="https://img.icons8.com/doodle/100/000000/brick.png"></img>
         <Link to="/home" className="navbar-brand" style={{fontWeight:"800", padding:"4px 0px"}}>
@@ -40,6 +42,7 @@ handleLogout = () =>{
             }
           </div>
         </div>
+        {/* Chức năng đăng xuất */}
          <UncontrolledDropdown>
               <DropdownToggle nav caret> 
               Adminstration <img src="https://img.icons8.com/ios-filled/50/000000/cat-footprint.png"></img>

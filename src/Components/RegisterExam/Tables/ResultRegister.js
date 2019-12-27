@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Table, Container } from 'reactstrap';
 import { Button } from 'reactstrap';
+// Hiển thị các môn thi đã đăng kí
 class ResultRegister extends Component {
   componentDidMount() {
   }

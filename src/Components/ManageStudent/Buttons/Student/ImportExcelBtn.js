@@ -4,10 +4,11 @@ import { alertText, alertTextCustom } from '../../../../core/Controller';
 import * as ApiConfig from '../../../../api/ConfigApi';
 const $ = require('jquery')
 $.DataTable = require('datatables.net')
-
+// Thêm Sinh Viên bằng file excel
 class ImportExcelBtn extends Component {
 
     constructor(props) {
+        // Khởi tạo constructor
         super(props);
         this.state = {
             loading: false,
@@ -28,7 +29,7 @@ class ImportExcelBtn extends Component {
             });
         });
     }
-
+    // set toggle Modal
     toggleModal = () => {
         this.setState({
             modal: !this.state.modal,
@@ -45,7 +46,7 @@ class ImportExcelBtn extends Component {
             file: file
         })
     }
-
+    // Thêm file excel
     onAddFile = () => {
         this.setState({
             loading: true
@@ -83,7 +84,7 @@ class ImportExcelBtn extends Component {
             .catch(err => alertText('Thêm file không thành công'))
 
     }
-
+    // Kiểm tra thông tin
     checkStudentToggle = () => {
         this.setState(prevState => ({
             checkStudentModal: !prevState.checkStudentModal

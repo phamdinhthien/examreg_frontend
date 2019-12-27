@@ -2,7 +2,9 @@ import React from 'react';
 import { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, Spinner, Badge } from 'reactstrap';
 import * as ApiConfig from '../../../../api/ConfigApi';
+// Chức năng Sửa Môn Thi
 class UpdateExamSubject extends Component {
+    // khởi tạo constructor
     constructor(props) {
         super(props);
         this.state = {
@@ -12,7 +14,7 @@ class UpdateExamSubject extends Component {
             name: ''
         }
     }
-
+    // set toggle
     toggle = (e) => {
         e.preventDefault();
         this.setState({
@@ -35,7 +37,7 @@ class UpdateExamSubject extends Component {
                 .catch(err => console.log(err))
         }
     }
-
+    // xóa môn thi
     onUpdateExamSubject = () => {
         this.setState({
             loading: true
