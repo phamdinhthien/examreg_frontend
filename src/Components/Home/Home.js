@@ -7,6 +7,7 @@ import Authors from './Authors'
 class Home extends Component {
     render() {
         return (
+            // Các Component chính của trang chủ student
             <div>
                 <Banner />
                 <Card />

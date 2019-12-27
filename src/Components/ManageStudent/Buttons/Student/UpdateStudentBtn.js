@@ -6,6 +6,7 @@ import * as ApiConfig from '../../../../api/ConfigApi';
 import { formatDob, removeSpace } from './CommonStudentBtn';
 
 class UpdateStudentBtn extends Component {
+  // khởi tạo constructor
   constructor(props) {
     super(props);
     this.state = {
@@ -19,6 +20,7 @@ class UpdateStudentBtn extends Component {
       invaldidDob: false
     }
   }
+  //set toggle
   toggle = () => {
     let { studentID } = this.props;
     this.setState({
@@ -59,7 +61,7 @@ class UpdateStudentBtn extends Component {
       mail: document.getElementById('code').value + "@vnu.edu.vn"
     })
   }
-
+  // Cập nhật thông tin sinh viên
   onUpdateStudent = () => {
     let { studentID } = this.props;
     let { code, name, mail, dob } = this.state;
@@ -93,7 +95,6 @@ class UpdateStudentBtn extends Component {
       })
       .catch(err => console.log(err));
   }
-
   // checkValue = () => {
   //   let { code, name, dob } = this.state;
   //   if(!name){
@@ -106,7 +107,6 @@ class UpdateStudentBtn extends Component {
   //   let regexCode = /^[0-9]{8}$/;
   //   let regexName = /^[\wÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]+$/;
   //   let regexDob = /^[0-9]{4}\/[0-9]{2}\/[0-9]{2}$/
-
   //   this.setState({ invalidCode: false, invalidName: false, invaldidDob: false });
   //   if (!regexCode.test(code)) {
   //     this.setState({ invalidCode: true })

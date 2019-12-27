@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Menu from '../Menu';
 import { BrowserRouter as Router, Route, Link, NavLink, Switch } from 'react-router-dom';
 import routes from '../../router';
+// Các trang làm việc của admin
 class Admin extends Component {
   showMenu = (routes) => {
     var result = null;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+// Thiết lập các thuộc tính Alert để thông báo với user 
 class Alert extends Component {
     constructor(props) {
         super(props);

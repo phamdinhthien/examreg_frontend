@@ -4,7 +4,9 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, La
 import * as ApiConfig from '../../../../api/ConfigApi';
 import { alertText, alertTextCustom } from '../../../../core/Controller';
 
+// Chức năng Thêm Ca Thi
 class AddExamtime extends Component {
+  // khởi tạo constructor
   constructor(props) {
     super(props);
     this.state = {
@@ -33,6 +35,7 @@ class AddExamtime extends Component {
       .catch(err => console.log(err))
   }
 
+  //set toggle
   toggle = () => {
     this.setState({
       modal: !this.state.modal,

@@ -5,6 +5,7 @@ import * as ApiConfig from '../../../../api/ConfigApi';
 import { alertText, alertTextCustom } from '../../../../core/Controller';
 
 class UpdateExamSubject extends Component {
+    // khởi tạo constructor
     constructor(props) {
         super(props);
         this.state = {
@@ -14,7 +15,7 @@ class UpdateExamSubject extends Component {
             name: ''
         }
     }
-
+    // set toggle
     toggle = (e) => {
         e.preventDefault();
         this.setState({
@@ -37,7 +38,7 @@ class UpdateExamSubject extends Component {
                 .catch(err => console.log(err))
         }
     }
-
+    // xóa môn thi
     onUpdateExamSubject = () => {
         this.setState({
             loading: true

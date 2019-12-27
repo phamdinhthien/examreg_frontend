@@ -4,6 +4,7 @@ class Banner extends Component {
 
     render() {
         return (
+            // Banner thông báo ngày bắt đầu với ngày kết thúc đăng kí thi
             <div className="banner">
             <div className="banner-box">
                 <div className="container">
@@ -13,6 +14,7 @@ class Banner extends Component {
                             <p>Trường Đại Học ABCuni sẽ bắt đầu mở đăng kí thi vào ngày 24/12/2019 đến 30/12/2019.</p>
                         </div>
                         <div className="col-md-4">
+                        {/* Chức năng giúp sinh viên đăng kí môn thi */}
                         <a href="#" className="learing-btn" style={{textDecoration:"underline "}}>
                             <span></span>
                             <span></span>

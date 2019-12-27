@@ -3,7 +3,9 @@ import { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, Spinner, Badge } from 'reactstrap';
 import { alertText, alertTextCustom } from '../../../../core/Controller';
 import * as ApiConfig from '../../../../api/ConfigApi';
+// Sửa Khóa Học
 class AddClass extends Component {
+    // Khởi tạo Constructor
     constructor(props) {
         super(props);
         this.state = {
@@ -17,7 +19,7 @@ class AddClass extends Component {
             invalidYearEnd: false
         }
     }
-
+    // Set toggle Modal
     toggleModal = (e) => {
         e.preventDefault();
         this.props.setCollapse(this.props.index);
@@ -54,6 +56,7 @@ class AddClass extends Component {
             [name]: value
         })
     }
+    // Update Course
     onUpdateCourse = () => {
         this.setState({
             loading: true
@@ -96,7 +99,7 @@ class AddClass extends Component {
             })
         }
     }
-
+    // Kiểm tra giá trị
     checkValue = () => {
         let { code, yearStart, yearEnd } = this.state;
         let regexCode = /^\w/;

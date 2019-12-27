@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Label, FormGroup, Form, Input, Spinner } from "reactstrap";
 import { alertText, alertTextCustom } from '../../../../core/Controller';
 import * as ApiConfig from '../../../../api/ConfigApi';
-
+// Thêm khóa học
 class ManageClass extends Component {
+    // khởi tạo constructor
     constructor(props) {
         super(props);
         this.state = {
@@ -38,6 +39,7 @@ class ManageClass extends Component {
             [name]: value
         })
     }
+    // Thêm Khóa
     onAddCourse = () => {
         this.setState({
             loading: true

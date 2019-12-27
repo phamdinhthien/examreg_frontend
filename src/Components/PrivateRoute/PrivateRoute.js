@@ -1,6 +1,6 @@
 import React from 'react'
 import { Redirect, Route } from 'react-router-dom';
-
+// private route
 const PrivateRoute = ({ component: Component, ...rest }) => {
   var isLoggedIn = false;
   const access_token = localStorage.getItem('access_token');

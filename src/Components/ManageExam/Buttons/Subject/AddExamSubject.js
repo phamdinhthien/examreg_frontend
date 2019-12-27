@@ -3,8 +3,9 @@ import { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, Spinner } from 'reactstrap';
 import * as ApiConfig from '../../../../api/ConfigApi';
 import { alertText, alertTextCustom } from '../../../../core/Controller';
-
+// Chức năng thêm môn thi
 class AddExamSubject extends Component {
+  // khởi tạo constructor
   constructor(props) {
     super(props);
     this.state = {
@@ -14,7 +15,7 @@ class AddExamSubject extends Component {
       name: ''
     }
   }
-
+  // set toggle
   toggle = () => {
     this.setState({
       modal: !this.state.modal,
@@ -23,7 +24,7 @@ class AddExamSubject extends Component {
       name: ''
     })
   }
-
+  // thêm môn thi
   onAddExamSubject = () => {
     this.setState({
       loading: true
@@ -82,12 +83,12 @@ class AddExamSubject extends Component {
           <ModalBody>
             <Form>
               <FormGroup>
-                <Label for="code">Mã Môn Thi</Label>
-                <Input type="text" name="code" id="code" placeholder="" value={code} onChange={this.onChange} />
-              </FormGroup>
-              <FormGroup>
                 <Label for="name">Tên Môn Thi</Label>
                 <Input type="text" name="name" id="name" placeholder="" value={name} onChange={this.onChange} />
+              </FormGroup>
+              <FormGroup>
+                <Label for="code">Mã Học Phần</Label>
+                <Input type="text" name="code" id="code" placeholder="" value={code} onChange={this.onChange} />
               </FormGroup>
             </Form>
           </ModalBody>

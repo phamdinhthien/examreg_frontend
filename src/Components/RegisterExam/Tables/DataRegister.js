@@ -4,7 +4,6 @@ import * as ApiConfig from '../../../api/ConfigApi';
 import { getCurrentRoles, getUserId } from '../../../core/GetRoles';
 
 const userID = getUserId();
-
 class DataRegister extends Component {
 
   constructor(props) {

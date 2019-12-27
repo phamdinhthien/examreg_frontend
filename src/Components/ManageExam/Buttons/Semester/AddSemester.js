@@ -5,6 +5,7 @@ import * as ApiConfig from '../../../../api/ConfigApi';
 import { alertText, alertTextCustom } from '../../../../core/Controller';
 
 class AddExam extends Component {
+  // khởi tạo constructor
   constructor(props) {
     super(props);
     this.state = {
@@ -14,7 +15,7 @@ class AddExam extends Component {
       year: ''
     }
   }
-
+  // set toggle
   toggle = () => {
     this.setState({
       modal: !this.state.modal,
@@ -23,7 +24,7 @@ class AddExam extends Component {
       year: ''
     })
   }
-
+  // thêm kì thi
   onAddSemester = () => {
     this.setState({
       loading: true

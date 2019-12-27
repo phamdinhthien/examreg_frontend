@@ -20,7 +20,6 @@ class EditExamtime extends Component {
       examrooms: []
     }
   }
-
   componentDidMount() {
     fetch(ApiConfig.API_URL + '/Examrooms/GetAllExamrooms.php')
       .then(res => res.json())

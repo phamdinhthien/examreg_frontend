@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, Spinner, Badge } from 'reactstrap';
 import * as ApiConfig from '../../../../api/ConfigApi';
 import { alertText, alertTextCustom } from '../../../../core/Controller';
-
+// Xóa sinh viên
 class DeleteStudent extends Component {
+    // khởi tạo constructor
     constructor(props) {
         super(props);
         this.state = {
@@ -11,10 +12,11 @@ class DeleteStudent extends Component {
             loading: false
         }
     }
+    // set toggle
     toggle = () => {
         this.setState({ modal: !this.state.modal, loading: false })
     }
-
+    // Xóa Sinh viên
     onDeleteStudent = () => {
         let { studentID } = this.props;
         this.setState({

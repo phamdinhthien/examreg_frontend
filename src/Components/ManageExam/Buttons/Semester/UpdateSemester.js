@@ -3,8 +3,9 @@ import { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, Spinner, Badge } from 'reactstrap';
 import { alertText, alertTextCustom } from '../../../../core/Controller';
 import * as ApiConfig from '../../../../api/ConfigApi';
-
+// Chức năng sửa kì thi
 class UpdateExam extends Component {
+    // Khởi tạo constructor
     constructor(props) {
         super(props);
         this.state = {
@@ -14,6 +15,7 @@ class UpdateExam extends Component {
             year: ''
         }
     }
+    // set toggle
     toggle = (e) => {
         e.preventDefault();
         this.props.setCollapse(this.props.index);
