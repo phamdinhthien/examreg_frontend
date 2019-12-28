@@ -2,7 +2,8 @@ import React from 'react';
 import { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
 import * as ApiConfig from '../../../../api/ConfigApi';
-// CHức năng thêm kì thi
+import { alertText, alertTextCustom } from '../../../../core/Controller';
+
 class AddExam extends Component {
   // khởi tạo constructor
   constructor(props) {
@@ -38,10 +39,16 @@ class AddExam extends Component {
       body: JSON.stringify(data)
     }).then(res => res.json())
       .then(response => {
-        this.setState({
-          modal:false
-        });
-        this.props.loadData();
+        let status = response.status;
+        let message = response.message
+        if(status == 201){
+          this.setState({
+            modal:false
+          });
+          this.props.loadData();
+        } else if(status == 400){
+          alertText(message);
+        }
       })
       .catch(err => console.log(err))
   }

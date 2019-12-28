@@ -4,7 +4,6 @@ import { Table, Container, Card, CardImg, CardText, CardHeader, CardBody, Spinne
 import UpdateSubjectClass from '../Buttons/SubjectClass/UpdateSubjectClass';
 import AddClassClass from '../Buttons/SubjectClass/AddClassClass';
 import * as ApiConfig from '../../../api/ConfigApi';
-import { alertText, alertTextCustom } from '../../../core/Controller';
 import DeleteSubjectClass from '../Buttons/SubjectClass/DeleteSubjectClass';
 const $ = require('jquery')
 $.DataTable = require('datatables.net')

@@ -2,6 +2,7 @@ import React from 'react';
 import { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
 import * as ApiConfig from '../../../../api/ConfigApi';
+import { alertText, alertTextCustom } from '../../../../core/Controller';
 
 // Chức năng Thêm Ca Thi
 class AddExamtime extends Component {
@@ -16,6 +17,7 @@ class AddExamtime extends Component {
       subjectclassId: '',
       date: '',
       startTime: '',
+      endTime: '',
       examroomName: '',
       amountComputer: '',
       subjects: [],
@@ -43,6 +45,7 @@ class AddExamtime extends Component {
       subjectclassId: '',
       date: '',
       startTime: '',
+      endTime: '',
       examroomName: '',
       amountComputer: '',
       subjectClasses: []
@@ -54,8 +57,7 @@ class AddExamtime extends Component {
     let value = target.value;
     console.log(name)
     if (name == 'subjectName') {
-      console.log('acs')
-      fetch(ApiConfig.API_URL + '/SubjectClasses/GetAllSubjectClasses.php?subject_id=' + value)
+      fetch(ApiConfig.API_URL + '/Examtimes/GetSubjectClassesToExamtime.php')
         .then(res => res.json())
         .then(response => {
           console.log(response.data)
@@ -73,13 +75,14 @@ class AddExamtime extends Component {
     this.setState({
       loading: true
     })
-    let { subjectName, subjectClasseCode, subjectclassId, date, startTime, examroomName, amountComputer } = this.state;
+    let { subjectName, subjectClasseCode, subjectclassId, date, startTime, endTime, examroomName, amountComputer } = this.state;
     let dateArr = date.split("/");
     let newDate = `${dateArr[2]}-${dateArr[1]}-${dateArr[0]}`
     let data = {
       subjectclass_id: subjectClasseCode,
       date: newDate,
       start_time: startTime,
+      end_time: endTime,
       examroom_id: examroomName,
       amount_computer: amountComputer
     }
@@ -88,16 +91,27 @@ class AddExamtime extends Component {
       body: JSON.stringify(data)
     }).then(res => res.json())
       .then(response => {
-        this.setState({
-          modal: false
-        });
+        let status = response.status;
+        let message = response.message
+        if (status == 201) {
+          alertTextCustom(message, "#28a745");
+          this.setState({
+            modal: false
+          });
+          this.props.loadData();
+        } else if (status == 400) {
+          this.setState({
+            loading: false
+          })
+          alertText(message);
+        }
       })
       .catch(err => console.log(err))
   }
 
   render() {
     let { className, subjects } = this.props;
-    let { modal, examrooms, subjectClasseCode, subjectclassId, date, startTime, examroomName, amountComputer, subjectClasses } = this.state;
+    let { modal, examrooms, date, startTime, endTime, amountComputer, subjectClasses } = this.state;
     return (
       <div>
         <div className="EditButtonAddShiftExam" style={{ padding: "15px 0" }}>
@@ -178,6 +192,10 @@ class AddExamtime extends Component {
               <FormGroup>
                 <Label for="startTime">Giờ Bắt Đầu</Label>
                 <Input type="text" name="startTime" id="startTime" value={startTime} onChange={this.onChange} />
+              </FormGroup>
+              <FormGroup>
+                <Label for="endTime">Giờ Kết Thúc</Label>
+                <Input type="text" name="endTime" id="endTime" value={endTime} onChange={this.onChange} />
               </FormGroup>
             </Form>
           </ModalBody>

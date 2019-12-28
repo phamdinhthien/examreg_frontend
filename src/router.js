@@ -6,7 +6,8 @@ import DataStudentsFromManageExam from './Components/ManageExam/Tables/DataStude
 import Login from './Components/Login/Login';
 import Home from './Components/Home/Home';
 import DataSubjectClass from './Components/ManageExam/Tables/DataSubjectClass';
-// Định tuyến trang
+import RegisterExam from './Components/RegisterExam/RegisterExam';
+
 const routes = [
     {
         path: '/login',
@@ -43,6 +44,12 @@ const routes = [
         exact: true,
         component: DataStudentsFromManageExam,
         role: 1
+    },
+    {
+        path: '/register-examtime',
+        exact: false,
+        component: RegisterExam,
+        role: 2
     },
     {
         path: '/home',

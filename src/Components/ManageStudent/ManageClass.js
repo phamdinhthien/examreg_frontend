@@ -99,7 +99,7 @@ class ManageClass extends Component {
         <Card className="card-custom">
           <CardHeader>
             <b className="title-table"><i className="fa fa-align-justify mr-2"></i>Danh Sách Các Khóa Học</b>
-            <div className='row position-relative'><AddCourseBtn onReloadData={this.loadData} courseNames={courseNames} /></div>
+            <div className='row position-relative'><AddCourseBtn loadData={this.loadData} courseNames={courseNames} /></div>
           </CardHeader>
           <CardBody>
             <div>

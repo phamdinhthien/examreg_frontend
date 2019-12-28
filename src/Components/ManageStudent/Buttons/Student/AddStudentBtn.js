@@ -3,8 +3,8 @@ import { Badge } from 'reactstrap';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import * as ApiConfig from '../../../../api/ConfigApi';
 import { alertText, alertTextCustom } from '../../../../core/Controller';
-import {removeSpace} from './CommonStudentBtn';
-// Thêm Sinh Viên
+import { removeSpace } from './CommonStudentBtn';
+
 class AddStudentBtn extends Component {
   // Khởi tạo constructor
   constructor(props) {
@@ -66,67 +66,68 @@ class AddStudentBtn extends Component {
   onAddStudent = () => {
     let { code, name, mail, dob } = this.state;
     let { classID } = this.props;
-    
-    if (this.checkValue()) {
-      let arr = dob.split('/');
-      dob = `${arr[2]}-${arr[1]}-${arr[0]}`;
 
-      let data = {
-        code: code, name: removeSpace(name), mail: mail, class_id: classID, dob: dob
-      }
-      console.log(data)
-      fetch(ApiConfig.API_URL + '/Students/AddOneStudent.php', {
-        method: 'POST',
-        body: JSON.stringify(data)
-      }).then(res => res.json())
-        .then(response => {
-          if (response.message == 'studentExisted') {
-            alertText('Sinh viên này đã tồn tại')
-          } else {
-            alertTextCustom("Thêm sinh viên thành công", "#28a745");
-          }
+    let arr = dob.split('/');
+    dob = `${arr[2]}-${arr[1]}-${arr[0]}`;
+
+    let data = {
+      code: code, name: removeSpace(name), mail: mail, class_id: classID, dob: dob
+    }
+    fetch(ApiConfig.API_URL + '/Students/AddOneStudent.php', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    }).then(res => res.json())
+      .then(response => {
+        let status = response.status;
+        let message = response.message
+        if (status == 201 || status == 200) {
+          alertTextCustom(message, "#28a745");
           this.props.loadData();
           this.setState({
             modal: false
           });
-        })
-        .catch(err => console.log(err))
-    }
+        } else if (status == 400) {
+          alertText(message);
+          this.setState({
+            loading: false
+          })
+        }
+      })
+      .catch(err => console.log(err))
   }
 
-  // Kiểm tra dữ liệu
-  checkValue = () => {
-    let { code, name, dob } = this.state;
-    if(!name){
-      name = "";
-    }
-    let regexCode = /^[0-9]{8}$/;
-    let regexName = /^[\wÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]+$/;
-    let regexDob = /^[0-9]{4}\/[0-9]{2}\/[0-9]{2}$/
-    if(dob){
-      let arr = dob.split('/');
-      dob = `${arr[2]}/${arr[1]}/${arr[0]}`;
-    }
-  
-    this.setState({ invalidCode: false, invalidName: false, invaldidDob: false });
-    if (!regexCode.test(code)) {
-      this.setState({ invalidCode: true })
-      document.getElementById('code').setAttribute('title', 'MSSV phải gồm 8 chữ số')
-    }
-    if (!regexName.test(name) || name.trim() == "") {
-      this.setState({ invalidName: true })
-      document.getElementById('name').setAttribute('title', 'Thông tin bạn nhập chưa đúng')
-    }
-    if (!regexDob.test(dob) || isNaN(new Date(dob))) {
-      this.setState({ invaldidDob: true });
-      document.getElementById('dob').setAttribute('title', 'Định dạng bạn nhập chưa đúng')
-    }
 
-    if (regexCode.test(code) && regexName.test(name) && regexDob.test(dob) && name.trim() != "" && !isNaN(new Date(dob))) {
-      return true;
-    }
-    return false;
-  }
+  // checkValue = () => {
+  //   let { code, name, dob } = this.state;
+  //   if (!name) {
+  //     name = "";
+  //   }
+  //   let regexCode = /^[0-9]{8}$/;
+  //   let regexName = /^[\wÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]+$/;
+  //   let regexDob = /^[0-9]{4}\/[0-9]{2}\/[0-9]{2}$/
+  //   if (dob) {
+  //     let arr = dob.split('/');
+  //     dob = `${arr[2]}/${arr[1]}/${arr[0]}`;
+  //   }
+
+  //   this.setState({ invalidCode: false, invalidName: false, invaldidDob: false });
+  //   if (!regexCode.test(code)) {
+  //     this.setState({ invalidCode: true })
+  //     document.getElementById('code').setAttribute('title', 'MSSV phải gồm 8 chữ số')
+  //   }
+  //   if (!regexName.test(name) || name.trim() == "") {
+  //     this.setState({ invalidName: true })
+  //     document.getElementById('name').setAttribute('title', 'Thông tin bạn nhập chưa đúng')
+  //   }
+  //   if (!regexDob.test(dob) || isNaN(new Date(dob))) {
+  //     this.setState({ invaldidDob: true });
+  //     document.getElementById('dob').setAttribute('title', 'Định dạng bạn nhập chưa đúng')
+  //   }
+  //   if (regexCode.test(code) && regexName.test(name) && regexDob.test(dob) && name.trim() != "" && !isNaN(new Date(dob))) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
 
   render() {
     let { modal, code, name, mail, dob, invalidCode, invalidName, invaldidDob } = this.state;
@@ -139,7 +140,7 @@ class AddStudentBtn extends Component {
             <Form>
               <FormGroup>
                 <Label for="code">MSSV</Label>
-                <Input type="text" name="code" id="code" value={code} onChange={this.onChange} invalid={invalidCode}/>
+                <Input type="text" name="code" id="code" value={code} onChange={this.onChange} invalid={invalidCode} />
               </FormGroup>
               <FormGroup>
                 <Label for="name">Tên</Label>

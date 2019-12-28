@@ -77,13 +77,22 @@ class AddClass extends Component {
                 body: JSON.stringify(data)
             }).then(res => res.json())
                 .then(response => {
-                    alertTextCustom("Cập nhật khóa học thành công", "#28a745");
-                    this.props.loadData();
-                    this.setState({
-                        modal: false
-                    })
+                    let status = response.status;
+                    let message = response.message
+                    if (status == 201 || status == 200) {
+                        alertTextCustom(message, "#28a745");
+                        this.setState({
+                            modal: false
+                        });
+                        this.props.loadData();
+                    } else if (status == 400) {
+                        alertText(message);
+                        this.setState({
+                            loading: false
+                        })
+                    }
                 })
-                .catch(err => alertText('Cập nhật khóa học không thành công'))
+                .catch(err => console.log(err))
         } else {
             this.setState({
                 loading: false

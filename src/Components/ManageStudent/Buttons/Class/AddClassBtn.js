@@ -40,38 +40,46 @@ class AddClass extends Component {
       code: code,
       course_id: courseId
     }
-    if(this.checkValue(courseId)){
-      fetch(ApiConfig.API_URL + '/Classes/CreateOneClass.php', {
-        method: 'POST',
-        body: JSON.stringify(data)
-      }).then(res => res.json())
-        .then(response => {
-          alertTextCustom("Thêm lớp học thành công", "#28a745");
+
+    fetch(ApiConfig.API_URL + '/Classes/CreateOneClass.php', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    }).then(res => res.json())
+      .then(response => {
+        let status = response.status;
+        let message = response.message
+        if (status == 201 || status == 200) {
+          alertTextCustom(message, "#28a745");
           this.setState({
-            modal:false
+            modal: false
           });
           this.props.getAllClassesByCourseID(courseId);
-        })
-        .catch(err => alertText('Thêm lớp học không thành công'))
-    }
+        } else if (status == 400) {
+          alertText(message);
+          this.setState({
+            loading: false
+          })
+        }
+      })
+      .catch(err => alertText('Thêm lớp học không thành công'))
   }
 
-  checkValue = (courseID) => {
-    let {code} = this.state;
-    let {classesByCourseId} = this.props;
-    let classNames = [];
-    classesByCourseId[courseID].map(c=>{
-      classNames.push(c.code)
-    })
-    if(classNames.includes(code)){
-      this.setState({ invalidCode: true, loading: false })
-      document.getElementById('code').setAttribute('title', 'Tên lớp đã tồn tại')
-      return false;
-    }
-    return true;
-  }
+  // checkValue = (courseID) => {
+  //   let {code} = this.state;
+  //   let {classesByCourseId} = this.props;
+  //   let classNames = [];
+  //   classesByCourseId[courseID].map(c=>{
+  //     classNames.push(c.code)
+  //   })
+  //   if(classNames.includes(code)){
+  //     this.setState({ invalidCode: true, loading: false })
+  //     document.getElementById('code').setAttribute('title', 'Tên lớp đã tồn tại')
+  //     return false;
+  //   }
+  //   return true;
+  // }
   render() {
-  
+
     let { modal, code, invalidCode } = this.state;
     return (
       <div className="add-class-btn">
@@ -82,7 +90,7 @@ class AddClass extends Component {
             <Form>
               <FormGroup>
                 <Label for="AddClassSection">Tên Lớp:</Label>
-                <Input type="text" id="AddClassSection" placeholder="" name="code" id="code" value={code} onChange={this.onChange} invalid={invalidCode}/>
+                <Input type="text" id="AddClassSection" placeholder="" name="code" id="code" value={code} onChange={this.onChange} invalid={invalidCode} />
               </FormGroup>
             </Form>
           </ModalBody>

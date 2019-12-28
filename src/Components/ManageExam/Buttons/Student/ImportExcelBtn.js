@@ -58,27 +58,16 @@ class ImportExcelBtn extends Component {
         })
             .then(res => res.json())
             .then(response => {
-                if (response.datas.length > 0) {
                     this.setState({
-                        checkStudentModal: true,
-                        datas: response.datas
-                    })
-                }
+                        modal: false,
+                        datas: response.datas,
+                        loading: false
+                })
             })
             .catch(err => console.log(err))
 
     }
 
-    checkStudentToggle = () => {
-        this.setState(prevState => ({
-            checkStudentModal: !prevState.checkStudentModal
-        }));
-        this.setState({
-            modal: false
-        })
-        alertTextCustom("Thêm file thành công", "#28a745");
-        this.props.loadData();
-    }
 
     render() {
         let { modal, studentsExisted, studentAdded } = this.state;
@@ -108,7 +97,7 @@ class ImportExcelBtn extends Component {
                     </ModalFooter>
                 </Modal>
 
-                           </div>
+            </div>
 
         );
     }
