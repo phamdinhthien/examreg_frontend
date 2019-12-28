@@ -53,7 +53,7 @@ class DataSubjectClass extends Component {
       <Container fluid className="customFontsize data-students">
         <Card className="card-custom">
           <CardHeader style={{height:"50px"}}>
-            <b className="title-table"><i className="fa fa-align-justify mr-2"></i>K60</b>
+            <b className="title-table"><i className="fa fa-align-justify mr-2"></i>Quản Lý Lớp Học Phần</b>
             <div className="btns">
               <AddClassClass subjectID={this.props.match.params.subjectID} loadData={this.loadData} />
             </div>

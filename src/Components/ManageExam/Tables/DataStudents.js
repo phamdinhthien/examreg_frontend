@@ -67,7 +67,7 @@ class DataStudents extends Component {
       <Container fluid className="customFontsize data-students">
         <Card className="card-custom">
           <CardHeader>
-            <b className="title-table"><i className="fa fa-align-justify mr-2"></i>K60</b>
+            <b className="title-table"><i className="fa fa-align-justify mr-2"></i>Quản Lý Sinh Viên</b>
             <div className="btns">
               <AddStudentBtn classID={classID} loadData={this.loadData} subjectClassID={subjectClassID}/> <div className="mx-1"></div>
               <ImportExcelBtn loadData={this.loadData} classID={classID} subjectClassID={subjectClassID}/>

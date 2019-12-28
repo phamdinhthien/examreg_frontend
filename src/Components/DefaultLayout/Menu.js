@@ -48,7 +48,7 @@ class Menu extends Component {
           {/* Chức năng đăng xuất */}
           <UncontrolledDropdown>
             <DropdownToggle nav caret>
-              Chào Mừng <img src="https://img.icons8.com/ios-filled/50/000000/cat-footprint.png"></img>
+              Chào Mừng Bạn <img src="https://img.icons8.com/ios-filled/50/000000/cat-footprint.png"></img>
             </DropdownToggle>
             <DropdownMenu right>
               <DropdownItem>
