@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Container, Button } from 'reactstrap';
+import { Table, Container, Button, Card, CardHeader, CardBody } from 'reactstrap';
 import * as ApiConfig from '../../api/ConfigApi';
 import { getCurrentRoles, getUserId } from '../../core/GetRoles';
 import './Style.css';
@@ -75,46 +75,52 @@ class DataRegister extends Component {
   render() {
     let { examtimes, startIndex_1, startIndex_2, checkedArr, examtimesRegistered } = this.state;
     return (
-      <div className="container">
-        <h3>Các Môn Thi Đã Chọn</h3>
-        <div id="docx">
-          <div class="WordSection1">
-            <table style={{ width: '100%', padding: '50px' }}>
-              <thead>
-                <tr>
-                  <td>STT</td>
-                  <td>Tên Môn Thi</td>
-                  <td>Mã Học Phần</td>
-                  <td>Phòng Thi</td>
-                  <td>Ngày Thi</td>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  examtimesRegistered.length > 0
-                    ?
-                    examtimesRegistered.map((e, index) => {
-                      return (
-                        <tr key={index}>
-                          <td>{startIndex_2++}</td>
-                          <td>{e.subjectName}</td>
-                          <td>{e.subjectclassCode}</td>
-                          <td>{e.examroomName}</td>
-                          <td>{`${this.formatDob(e.date)} (${e.startTime} - ${e.endTime})`}</td>
-                        </tr>
-                      )
-                    })
-                    :
+      <div className="container-fluid">
+        <Card className="card-custom">
+          <CardHeader>
+            <b className="title-table"><i className="fa fa-align-justify mr-2"></i>Các Môn Thi Đã Chọn</b>
+          </CardHeader>
+          <CardBody>
+            <div id="docx">
+              <div class="WordSection1">
+                <Table striped style={{ width: '100%', padding: '50px', marginTop: '30px' }}>
+                  <thead>
                     <tr>
-                      <td colSpan="7" style={{ textAlign: "center" }}>Chưa có dữ liệu</td>
+                      <td>STT</td>
+                      <td>Tên Môn Thi</td>
+                      <td>Mã Học Phần</td>
+                      <td>Phòng Thi</td>
+                      <td>Ngày Thi</td>
                     </tr>
-                }
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <Button color="success" className="mt-2" id="print" onClick={() => { this.onPrint(window.docx) }}>Xuất ra word</Button>{' '}
-        <Button color="success" className="mt-2" id="print" onClick={() => {window.print() }}>In</Button>{' '}
+                  </thead>
+                  <tbody>
+                    {
+                      examtimesRegistered.length > 0
+                        ?
+                        examtimesRegistered.map((e, index) => {
+                          return (
+                            <tr key={index}>
+                              <td>{startIndex_2++}</td>
+                              <td>{e.subjectName}</td>
+                              <td>{e.subjectclassCode}</td>
+                              <td>{e.examroomName}</td>
+                              <td>{`${this.formatDob(e.date)} (${e.startTime} - ${e.endTime})`}</td>
+                            </tr>
+                          )
+                        })
+                        :
+                        <tr>
+                          <td colSpan="7" style={{ textAlign: "center" }}>Chưa có dữ liệu</td>
+                        </tr>
+                    }
+                  </tbody>
+                </Table>
+              </div>
+            </div>
+            <Button color="success" className="mt-2" id="print" onClick={() => { this.onPrint(window.docx) }}>Xuất ra word</Button>{' '}
+            <Button color="success" className="mt-2" id="print" onClick={() => { window.print() }}>In</Button>{' '}
+          </CardBody>
+        </Card>
       </div>
     );
   }

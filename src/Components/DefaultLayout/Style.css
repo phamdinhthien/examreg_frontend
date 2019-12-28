@@ -9,6 +9,13 @@
 }
 @media screen and (max-width: 1091px) {
     .navbar-brand{
-        color: blueviolet !important;
+        font-weight: 800;
+        padding: 4px 0px;
+        margin-right: 0;
+    }
+    .nav-link {
+        display: block;
+        padding: 0.5rem 1rem;
+        margin-right: 20px !important;
     }
 }

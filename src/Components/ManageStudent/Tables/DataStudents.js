@@ -6,6 +6,7 @@ import UpdateStudentBtn from '../Buttons/Student/UpdateStudentBtn';
 import DeleteStudent from '../Buttons/Student/DeleteStudentBtn';
 import AddStudentBtn from '../Buttons/Student/AddStudentBtn';
 
+
 const $ = require('jquery')
 $.DataTable = require('datatables.net')
 // Các dữ liệu chính trong bảng sinh viên
@@ -68,7 +69,7 @@ class DataStudents extends Component {
       <Container fluid className="customFontsize data-students">
         <Card className="card-custom">
           <CardHeader>
-            <b className="title-table"><i className="fa fa-align-justify mr-2"></i>K60</b>
+            <b className="title-table"><i className="fa fa-align-justify mr-2"></i>Quản Lý Lớp Học</b>
             <div className="btns">
               <AddStudentBtn classID={classID} loadData={this.loadData}/> <div className="mx-1"></div>
               <ImportExcelBtn loadData={this.loadData} classID={classID}/>
