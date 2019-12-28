@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Banner extends Component {
 
@@ -15,13 +16,13 @@ class Banner extends Component {
                         </div>
                         <div className="col-md-4">
                         {/* Chức năng giúp sinh viên đăng kí môn thi */}
-                        <a href="#" className="learing-btn" style={{textDecoration:"underline "}}>
+                        <Link to="/register-examtime" className="learing-btn" style={{textDecoration:"underline "}}>
                             <span></span>
                             <span></span>
                             <span></span>
                             <span></span>
                             Đăng Kí Thi Ngay
-                        </a>
+                        </Link>
                         </div>
                     </div>
                 </div>

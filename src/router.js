@@ -35,13 +35,13 @@ const routes = [
         role: 1
     },
     {
-        path: '/exams/subject/manage/:semesterID/:subjectID',
+        path: '/exams/subject/:semesterID/:subjectID',
         exact: true,
         component: DataSubjectClass,
         role: 1
     },
     {
-        path: '/exams/subject/manage/:semesterID/:subjectID/:subjectClassID',
+        path: '/exams/subject/:semesterID/:subjectID/:subjectClassID',
         exact: true,
         component: DataStudentsFromManageExam,
         role: 1

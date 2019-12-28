@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Card extends Component {
 
@@ -35,7 +36,7 @@ class Card extends Component {
                         <div className="face face2">
                             <div className="content">
                                 <p>Các ca thi để lựa chọn .</p>
-                                <a href="#">Chọn Lịch</a>
+                                <Link to="/register-examtime">Chọn Lịch</Link>
                             </div>
                         </div>
                     </div>
@@ -50,7 +51,7 @@ class Card extends Component {
                         <div className="face face2">
                             <div className="content">
                                 <p>Các môn thi đã đăng kí.</p>
-                                <a href="#">In Kết Quả</a>
+                                <Link to="/print-examtime-result">In Kết Quả</Link>
                             </div>
                         </div>
                     </div>

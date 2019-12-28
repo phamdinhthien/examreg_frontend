@@ -9,8 +9,9 @@ const breadcumbs = {
     'students': <Link to="/students">Sinh viên</Link>,
     'manage': <Link to="/manage">Khóa Học</Link>,
     'subject': <Link to="/subject">Môn Thi</Link>,
+    'register-examtime': <Link to="/register-examtime">Đăng Kí Thi</Link>,
+    'print-examtime-result': <Link to="/print-examtime-result">In Kết Quả Thi</Link>
 }
-
 class BreadCumbs extends Component {
 
     render() {
