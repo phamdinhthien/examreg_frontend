@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Table, Container } from 'reactstrap';
+
 // Các Trường dữ liệ của bảng hiển thị các môn đăng kí thi
 class DataRegister extends Component {
   componentDidMount() {

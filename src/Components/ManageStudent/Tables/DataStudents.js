@@ -6,6 +6,7 @@ import UpdateStudentBtn from '../Buttons/Student/UpdateStudentBtn';
 import DeleteStudent from '../Buttons/Student/DeleteStudentBtn';
 import AddStudentBtn from '../Buttons/Student/AddStudentBtn';
 
+
 const $ = require('jquery')
 $.DataTable = require('datatables.net')
 // Các dữ liệu chính trong bảng sinh viên
