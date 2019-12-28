@@ -7,6 +7,7 @@ import Login from './Components/Login/Login';
 import Home from './Components/Home/Home';
 import DataSubjectClass from './Components/ManageExam/Tables/DataSubjectClass';
 import RegisterExam from './Components/RegisterExam/RegisterExam';
+import PrintRegister from './Components/RegisterExam/PrintRegister';
 
 const routes = [
     {
@@ -49,6 +50,12 @@ const routes = [
         path: '/register-examtime',
         exact: false,
         component: RegisterExam,
+        role: 2
+    },
+    {
+        path: '/print-examtime-result',
+        exact: false,
+        component: PrintRegister,
         role: 2
     },
     {

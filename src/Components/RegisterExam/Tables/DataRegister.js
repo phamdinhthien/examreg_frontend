@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Table, Container, Button } from 'reactstrap';
 import * as ApiConfig from '../../../api/ConfigApi';
 import { getCurrentRoles, getUserId } from '../../../core/GetRoles';
+import { alertText, alertTextCustom } from '../../../core/Controller';
 
 const userID = getUserId();
 class DataRegister extends Component {
@@ -65,20 +66,34 @@ class DataRegister extends Component {
     let { checkedArr } = this.state;
     if (checkedArr.length > 0) {
       for (let i = 0; i < checkedArr.length; i++) {
-        console.log(i)
-        let data = {
-          student_id: userID,
-          examtime_id: checkedArr[i]
-        }
-        fetch(ApiConfig.API_URL + '/Students_Examtimes/PickExamtimes.php', {
-          method: 'POST',
-          body: JSON.stringify(data)
-        })
-          .then(res => res.json())
-          .then(response => {
-            this.loadData()
+        if (checkedArr[i]) {
+          let data = {
+            student_id: userID,
+            examtime_id: checkedArr[i]
+          }
+          fetch(ApiConfig.API_URL + '/Students_Examtimes/PickExamtimes.php', {
+            method: 'POST',
+            body: JSON.stringify(data)
           })
-          .catch(err => console.log(err))
+            .then(res => res.json())
+            .then(response => {
+              let status = response.status;
+              let message = response.message
+              if (status == 201 || status == 200) {
+                alertTextCustom(message, "#28a745");
+                this.setState({
+                  modal: false
+                });
+                this.loadData()
+              } else if (status == 400) {
+                alertText(message);
+                this.setState({
+                  loading: false
+                })
+              }
+            })
+            .catch(err => console.log(err))
+        }
       }
     } else {
 
@@ -94,7 +109,7 @@ class DataRegister extends Component {
       .catch(err => console.log(err))
   }
   render() {
-    let { examtimes, startIndex_1, startIndex_2, checkedArr,examtimesRegistered } = this.state;
+    let { examtimes, startIndex_1, startIndex_2, checkedArr, examtimesRegistered } = this.state;
     return (
       <div className="container">
         <Table striped>
@@ -120,7 +135,7 @@ class DataRegister extends Component {
                       <td>{e.subjectName}</td>
                       <td>{e.subjectclassCode}</td>
                       <td>{e.examroomName}</td>
-                      <td>{e.amountComputer}</td>
+                      <td>{e.count + '/' + e.amountComputer}</td>
                       <td>{`${this.formatDob(e.date)} (${e.startTime} - ${e.endTime})`}</td>
                       <td><input type="checkbox" value={e.id} onChange={() => { this.onChange(e.id) }} name /></td>
                     </tr>
@@ -142,7 +157,6 @@ class DataRegister extends Component {
                 <th>Tên Môn Thi</th>
                 <th>Mã Học Phần</th>
                 <th>Phòng Thi</th>
-                <th>Số Lượng Dự Thi</th>
                 <th>Ngày Thi</th>
                 <th>Hủy Bỏ</th>
               </tr>
@@ -153,15 +167,14 @@ class DataRegister extends Component {
                   ?
                   examtimesRegistered.map((e, index) => {
                     return (
-                        <tr key={index}>
-                          <td>{startIndex_2++}</td>
-                          <td>{e.subjectName}</td>
-                          <td>{e.subjectclassCode}</td>
-                          <td>{e.examroomName}</td>
-                          <td>{e.amountComputer}</td>
-                          <td>{`${this.formatDob(e.date)} (${e.startTime} - ${e.endTime})`}</td>
-                          <td><button onClick={()=>{this.onRemove(e.id)}} style={{border: 'none', color: '#dc3545', background: 'none'}}><i className="fa fa-trash mr-1"></i></button></td>
-                        </tr>
+                      <tr key={index}>
+                        <td>{startIndex_2++}</td>
+                        <td>{e.subjectName}</td>
+                        <td>{e.subjectclassCode}</td>
+                        <td>{e.examroomName}</td>
+                        <td>{`${this.formatDob(e.date)} (${e.startTime} - ${e.endTime})`}</td>
+                        <td><button onClick={() => { this.onRemove(e.id) }} style={{ border: 'none', color: '#dc3545', background: 'none' }}><i className="fa fa-trash mr-1"></i></button></td>
+                      </tr>
                     )
                   })
                   :

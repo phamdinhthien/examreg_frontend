@@ -17,6 +17,7 @@ const menus = [
   { label: "Quản Lý Sinh Viên", to: "/students", exact: false, display: role == 1},
   { label: "Quản Lý Kì Thi", to: "/exams", exact: false, display: role == 1 },
   { label: "Đăng Kí Thi", to: "/register-examtime", exact: false, display: role == 2 },
+  { label: "In Kí Thi", to: "/print-examtime-result", exact: false, display: role == 2 },
 ]
 class Menu extends Component {
 handleLogout = () =>{
@@ -46,7 +47,7 @@ handleLogout = () =>{
         {/* Chức năng đăng xuất */}
          <UncontrolledDropdown>
               <DropdownToggle nav caret> 
-              Adminstration <img src="https://img.icons8.com/ios-filled/50/000000/cat-footprint.png"></img>
+               <img src="https://img.icons8.com/ios-filled/50/000000/cat-footprint.png"></img>
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>

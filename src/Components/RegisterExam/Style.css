@@ -1,0 +1,11 @@
+#docx thead td{
+    font-weight: bold;
+}
+#docx tr, #docx td,#docx th{
+    border: 1px solid black;
+}
+@media print {
+    button {
+        display: none !important;
+     }
+ }
